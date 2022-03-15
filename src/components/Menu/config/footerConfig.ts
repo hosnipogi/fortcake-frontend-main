@@ -1,6 +1,7 @@
 import { FooterLinkType } from 'fortcake-uikit-v2'
 import { ContextApi } from 'contexts/Localization/types'
-import { baseUrl } from './config'
+// import { baseUrl } from './config'
+import { Links } from 'fortcake-config-files/dist'
 
 export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
   {
@@ -8,11 +9,11 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t('Play'),
-        href: `${baseUrl}play`,
+        href: Links.games,
       },
       {
         label: t('Swap'),
-        href: `${baseUrl}bsc`,
+        href: Links.bsc,
       },
       {
         label: t('Governance'),

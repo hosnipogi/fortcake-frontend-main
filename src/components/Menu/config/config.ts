@@ -1,9 +1,10 @@
 import { MenuItemsType } from 'fortcake-uikit-v2'
 import { ContextApi } from 'contexts/Localization/types'
+import { BASE_URL, Links } from 'fortcake-config-files/dist'
 
 export type ConfigMenuItemsType = MenuItemsType & { hideSubNav?: boolean }
 
-export const baseUrl = process.env.REACT_APP_BASE_URL
+export const baseUrl = BASE_URL
 
 const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
   {
@@ -16,7 +17,7 @@ const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
   {
     label: t('Swap'),
     icon: 'Swap',
-    href: `${baseUrl}bsc`,
+    href: Links.bsc,
     showItemsOnMobile: false,
     items: [],
   },

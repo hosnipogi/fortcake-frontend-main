@@ -1,63 +1,13 @@
 import { MenuItemsType } from 'fortcake-uikit-v2'
 import { ContextApi } from 'contexts/Localization/types'
-import { BASE_URL, Links } from 'fortcake-config-files/dist'
+import { BASE_URL, Nav } from 'fortcake-config-files/dist'
 
 export type ConfigMenuItemsType = MenuItemsType & { hideSubNav?: boolean }
 
 export const baseUrl = BASE_URL
 
-const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) => [
-  {
-    label: t('Home'),
-    icon: 'Home',
-    href: `/`,
-    showItemsOnMobile: false,
-    items: [],
-  },
-  {
-    label: t('Swap'),
-    icon: 'Swap',
-    href: Links.bsc,
-    showItemsOnMobile: false,
-    items: [],
-  },
-  {
-    label: t('Play'),
-    href: `/play`,
-    icon: 'Nft',
-    items: [],
-  },
-  {
-    label: t('FAQ'),
-    href: 'https://fortcake.gitbook.io/fortcake/10.-faq',
-    icon: 'Resources',
-    items: [],
-  },
-  {
-    label: t('Community'),
-    href: 'https://www.reddit.com/r/fortcake/',
-    icon: 'Groups',
-    items: [],
-  },
-  {
-    label: t('Blog'),
-    href: 'https://fortcake.medium.com/',
-    icon: 'Proposal',
-    items: [],
-  },
-  // {
-  //   label: t('Developers'),
-  //   href: 'https://github.com/fortcake',
-  //   icon: 'Trophy',
-  //   items: [],
-  // },
-  // {
-  //   label: t('Governance'),
-  //   href: 'https://snapshot.org/#/fortcake.eth/about',
-  //   icon: 'Nft',
-  //   items: [],
-  // },
-]
+const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) =>
+  Nav.map((menu) => ({ ...menu, href: menu.href, label: t(menu.label) }))
 
 export default config
 

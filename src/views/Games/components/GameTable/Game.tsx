@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Skeleton, Text, Flex, Button, ChevronUpIcon, ChevronDownIcon, useMatchBreakpoints } from 'fortcake-uikit-v2'
 import axios from 'axios'
 import { GameImage } from 'components/GameImage'
-import { baseUrl } from '../../../../components/Menu/config/config'
+import { Links } from 'fortcake-config-files/dist'
 import { GameProps, ChainProps } from '../types'
 
 const Container = styled.div`
@@ -163,7 +163,7 @@ const Game: React.FunctionComponent<GameProps> = ({ title, subtitle, logo, votes
           </Flex>
           <Flex justifyContent="space-between" alignItems="flex-end">
             <FlexButton className="links">
-              <Button as="a" href={chain.some((c) => c.chain === 'BSC') ? `${baseUrl}bsc` : `${baseUrl}eth`} scale="sm">
+              <Button as="a" href={chain.some((c) => c.chain === 'BSC') ? Links.bsc : Links.eth} scale="sm">
                 Swap
               </Button>
               <Button as="a" variant="secondary" href={cta} scale="sm">

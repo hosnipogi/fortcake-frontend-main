@@ -2824,9 +2824,9 @@
     source-map "^0.7.3"
 
 "@popperjs/core@^2.9.2":
-  version "2.11.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.3.tgz#f327fcb4f2576bf0b0ea0e65e773495cdf40188b"
-  integrity sha512-8U7hIl7+30XbIrJ0deQMXpXESM1L4yrt6BHok5hzcR0LivivuNkk+tHU1iRVScOwCmQcrOr6kvtIr29MNbQHqQ==
+  version "2.11.4"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.4.tgz#d8c7b8db9226d2d7664553a0741ad7d0397ee503"
+  integrity sha512-q/ytXxO5NKvyT37pmisQAItCFqA7FD/vNb8dgaJy3/630Fsc+Mz9/9f2SziBoIZ30TJooXyTwZmhi1zjXmObYg==
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -10681,7 +10681,7 @@ fortcake-config-files@fortcake/fortcake-config-files:
 
 fortcake-uikit-v2@fortcake/fortcake-uikit-v2:
   version "0.63.1"
-  resolved "https://codeload.github.com/fortcake/fortcake-uikit-v2/tar.gz/6d712d9d77012d8e8cb92760e8f994f77748981c"
+  resolved "https://codeload.github.com/fortcake/fortcake-uikit-v2/tar.gz/d6b1ba8840005daab76e4a04c6b3a895ef84ac48"
   dependencies:
     "@popperjs/core" "^2.9.2"
     "@types/styled-system" "^5.1.10"

@@ -17,17 +17,30 @@ import LogoMain from '../../assets/images/logo/logo_main.png'
 
 const LogoImg = styled.img`
   width: 35vw;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    width: 30vw;
+  }
   ${({ theme }) => theme.mediaQueries.md} {
     width: 16vw;
   }
-  ${({ theme }) => theme.mediaQueries.lg} {
+  ${({ theme }) => theme.mediaQueries.xl} {
     width: 12vw;
+  }
+`
+
+const StyledLink = styled(Link)`
+  font-size: 16px;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    font-size: 12px;
+  }
+  ${({ theme }) => theme.mediaQueries.md} {
+    font-size: 16px;
   }
 `
 
 const DappLink: React.FC = () => (
   <Button as="button" variant="primary" scale="sm">
-    <Link to={GamesLink.link}>Launch App</Link>
+    <StyledLink to={GamesLink.link}>Launch App</StyledLink>
   </Button>
 )
 

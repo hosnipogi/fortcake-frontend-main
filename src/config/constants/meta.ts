@@ -5,7 +5,7 @@ export const DEFAULT_META: PageMeta = {
   title: 'FORTCAKE - Play, Swap, Earn',
   description:
     'Find PLAY-TO-EARN games, Swap tokens, Earn rewards, Trade NFT`s and Join our community! Featuring our most upvoted crypto games all in one place.',
-  image: 'https://pancakeswap.finance/images/hero.png',
+  image: '',
 }
 
 export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
@@ -33,11 +33,11 @@ export const getCustomMeta = (path: string, t: ContextApi['t']): PageMeta => {
   switch (basePath) {
     case '/':
       return {
-        title: `${t('Home')} | ${t('PancakeSwap')}`,
+        title: DEFAULT_META.title,
       }
     case '/play':
       return {
-        title: `Fortcake - Interface`,
+        title: DEFAULT_META.title,
       }
     case '/add':
       return {

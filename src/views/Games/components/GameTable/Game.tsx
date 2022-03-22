@@ -136,25 +136,28 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
     if (isMobile) {
       return (
         <>
-          <Flex justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
+          <Flex justifyContent="space-between" alignItems="flex-start" style={{ width: '100%' }}>
             <TokenWrapper>
               {imgLoading ? (
                 <Skeleton variant="circle" animation="waves" width={90} height={90} />
               ) : (
-                <Image image={base64} width={120} height={120} />
+                <Image image={base64} width={120} height={120} ml="10px" />
               )}
             </TokenWrapper>
             <Flex flexDirection="column" alignItems="flex-end" style={{ width: '100%' }}>
               <Flex alignItems="center" mb="10px">
                 <Rating votes={votes}>{votes}</Rating>
-                <Text color="secondary" bold textTransform="uppercase">
+                <Text color="secondary" bold textTransform="uppercase" textAlign="right">
                   {title}
                 </Text>
               </Flex>
               <ChainAddress chain={chain} />
             </Flex>
           </Flex>
-          <Flex justifyContent="flex-end" mt="20px" style={{ width: '100%' }}>
+          <Flex mt="20px">
+            <Text textAlign="right">{subtitle}</Text>
+          </Flex>
+          <Flex justifyContent="flex-end" mt="40px" style={{ width: '100%' }}>
             <Button
               className="externalLinks"
               as="a"

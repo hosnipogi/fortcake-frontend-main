@@ -84,6 +84,8 @@ const ChainAddress: React.FC<{ chain: ChainProps[] }> = ({ chain }) => (
             ? `https://bscscan.com/address/${c.address}`
             : c.chain === 'ETH'
             ? `https://etherscan.io/address/${c.address}`
+            : c.chain === 'POL'
+            ? `https://polygonscan.com/address/${c.address}`
             : '#'
         }
         variant="secondary"

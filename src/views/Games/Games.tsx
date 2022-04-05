@@ -164,8 +164,8 @@ const Games: React.FC = () => {
                     value: 'hot',
                   },
                   {
-                    label: t('BSC'),
-                    value: 'BSC',
+                    label: t('BNB'),
+                    value: 'BNB',
                   },
                   {
                     label: t('ETH'),

@@ -65,28 +65,16 @@ const FlexButton = styled(Flex)`
 const Rating: React.FC<{ votes: number }> = ({ votes }) => {
   const { isMobile } = useMatchBreakpoints()
 
-  // const colors = {
-  //   red: '#E72F2E',
-  //   orange: '#E3BA32',
-  //   yellow: '#D3D42D',
-  //   green: '#83EC83',
-  // }
-
   let ratingIcon: string
-  // let b: string
 
   if (votes >= 25 && votes <= 49) {
     ratingIcon = orange
-    // b = colors.orange
   } else if (votes >= 50 && votes <= 74) {
     ratingIcon = yellow
-    // b = colors.yellow
   } else if (votes >= 75) {
     ratingIcon = green
-    // b = colors.green
   } else {
     ratingIcon = red
-    // b = colors.red
   }
 
   return (

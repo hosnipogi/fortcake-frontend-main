@@ -13,7 +13,7 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
       },
       {
         label: t('Swap'),
-        href: Links.bsc,
+        href: Links.bnb,
       },
       {
         label: t('Governance'),

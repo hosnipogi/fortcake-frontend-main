@@ -12,7 +12,7 @@ import LoadingSkeleton from './components/Loading'
 import Table from './components/GameTable/GameTable'
 import { RowProps } from './components/GameTable/Row'
 import { DesktopColumnSchema } from './components/types'
-import LogoCake from '../../assets/images/logo/logo_cake_lookingdown_green.png'
+import LogoCake from '../../assets/images/logo/logo_glasses.png'
 import useTheme from '../../hooks/useTheme'
 import { H2, LandingText, ControlContainer, LabelWrapper, FilterContainer, StyledImage } from './styles'
 

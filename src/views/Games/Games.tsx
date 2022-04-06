@@ -25,7 +25,7 @@ const Games: React.FC = () => {
   const [query, setQuery] = useState('')
   const { account } = useWeb3React()
   const [numberOfGamesVisible, setNumberOfGamesVisible] = useState(NUMBER_OF_GAMES_VISIBLE)
-  const [sortOption, setSortOption] = useState('hot')
+  const [sortOption, setSortOption] = useState('all')
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const chosenGames = useRef(0)
   const { isMobile } = useMatchBreakpoints()
@@ -60,7 +60,7 @@ const Games: React.FC = () => {
   const chosenGamesMemoized = useMemo(() => {
     let activeGames = games
 
-    if (sortOption !== 'hot') {
+    if (sortOption !== 'all') {
       activeGames = activeGames.filter((game) => game.chain.some(({ chain }) => chain === sortOption) && game)
     }
 
@@ -160,8 +160,8 @@ const Games: React.FC = () => {
               <Select
                 options={[
                   {
-                    label: t('Hot'),
-                    value: 'hot',
+                    label: t('All'),
+                    value: 'all',
                   },
                   {
                     label: t('BNB'),

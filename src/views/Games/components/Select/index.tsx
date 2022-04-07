@@ -43,7 +43,6 @@ const DropDownContainer = styled(Box)<{ isOpen: boolean }>`
   height: 32px;
   min-width: 100px;
   user-select: none;
-  z-index: 20;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     min-width: 100px;

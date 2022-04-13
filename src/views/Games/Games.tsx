@@ -7,7 +7,7 @@ import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { useTranslation } from 'contexts/Localization'
 import PageHeader from 'components/PageHeader'
 import SearchInput from 'components/SearchInput'
-import Select, { OptionProps } from 'components/Select/Select'
+// import Select, { OptionProps } from 'components/Select/Select'
 import LoadingSkeleton from './components/Loading'
 import Table from './components/GameTable/GameTable'
 import { RowProps } from './components/GameTable/Row'
@@ -25,7 +25,7 @@ const Games: React.FC = () => {
   const [query, setQuery] = useState('')
   const { account } = useWeb3React()
   const [numberOfGamesVisible, setNumberOfGamesVisible] = useState(NUMBER_OF_GAMES_VISIBLE)
-  const [sortOption, setSortOption] = useState('all')
+  // const [sortOption, setSortOption] = useState('all')
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const chosenGames = useRef(0)
   const { isMobile } = useMatchBreakpoints()
@@ -58,14 +58,14 @@ const Games: React.FC = () => {
   }
 
   const chosenGamesMemoized = useMemo(() => {
-    let activeGames = games
+    // let activeGames = games
 
-    if (sortOption !== 'all') {
-      activeGames = activeGames.filter((game) => game.chain.some(({ chain }) => chain === sortOption) && game)
-    }
+    // if (sortOption !== 'all') {
+    //   activeGames = activeGames.filter((game) => game.chain.some(({ chain }) => chain === sortOption) && game)
+    // }
 
-    return searchGame(activeGames).slice(0, numberOfGamesVisible)
-  }, [games, numberOfGamesVisible, sortOption, searchGame])
+    return searchGame(games).slice(0, numberOfGamesVisible)
+  }, [games, numberOfGamesVisible, searchGame])
 
   chosenGames.current = chosenGamesMemoized.length
 
@@ -107,9 +107,9 @@ const Games: React.FC = () => {
     return <Table data={rowData} columns={columns} userDataReady={userDataReady} />
   }
 
-  const handleSortOptionChange = (option: OptionProps): void => {
-    setSortOption(option.value)
-  }
+  // const handleSortOptionChange = (option: OptionProps): void => {
+  //   setSortOption(option.value)
+  // }
 
   const mobileHeaderStyle = isMobile
     ? {
@@ -155,7 +155,7 @@ const Games: React.FC = () => {
       <Page>
         <ControlContainer>
           <FilterContainer>
-            <LabelWrapper>
+            {/* <LabelWrapper>
               <Text textTransform="uppercase">{t('Sort by')}</Text>
               <Select
                 options={[
@@ -178,7 +178,7 @@ const Games: React.FC = () => {
                 ]}
                 onOptionChange={handleSortOptionChange}
               />
-            </LabelWrapper>
+            </LabelWrapper> */}
             <LabelWrapper style={{ marginLeft: 16 }}>
               <Text textTransform="uppercase">{t('Search')}</Text>
               <SearchInput onChange={handleChangeQuery} placeholder="Search Games" />

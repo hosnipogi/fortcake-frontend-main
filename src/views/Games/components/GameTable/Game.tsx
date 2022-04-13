@@ -13,7 +13,7 @@ import {
 import axios from 'axios'
 import { GameImage } from 'components/GameImage'
 import { GameProps, ChainProps } from '../types'
-import Select from '../Select'
+// import Select from '../Select'
 
 import green from '../../../../assets/images/gamelist/greenfortcakesize.png'
 import orange from '../../../../assets/images/gamelist/orangefortcakesize.png'
@@ -96,18 +96,22 @@ const Rating: React.FC<{ votes: number }> = ({ votes }) => {
 }
 
 const ChainAddress: React.FC<{ chain: ChainProps[] }> = ({ chain }) => {
-  const initValue = [{ label: 'Swap', value: '' }]
-  const availableChain = chain.map((c) => ({ label: c.chain, value: c.address }))
-  const options = initValue.concat(availableChain)
-  const handleOptionChange = ({ label, value }): { label: string; value: string } => {
-    const swapRedirect = `https://${label.toLowerCase()}.fortcake.io/swap/${value}`
-    if (label === 'Swap' || !value) return
-    // eslint-disable-next-line no-unused-expressions
-    window.open(swapRedirect, '_blank') || window.location.replace(swapRedirect)
-  }
+  // const initValue = [{ label: 'Swap', value: '' }]
+  // const availableChain = chain.map((c) => ({ label: c.chain, value: c.address }))
+  // const options = initValue.concat(availableChain)
+  // const handleOptionChange = ({ label, value }): { label: string; value: string } => {
+  //     const swapRedirect = `https://${label.toLowerCase()}.fortcake.io/swap/${value}`
+  //   if (label === 'Swap' || !value) return
+  //   // eslint-disable-next-line no-unused-expressions
+  //   window.open(swapRedirect, '_blank') || window.location.replace(swapRedirect)
+  // }
+  const url = `https://${chain[0].chain}.fortcake.io/swap/${chain[0].address}`
   return (
     <FlexButton className="chainAdress">
-      <Select options={options} onOptionChange={handleOptionChange} mr="20px" />
+      <Button className="externalLinks" as="a" variant="primary" href={url} scale="sm" mr="20px" target="_blank">
+        Swap
+      </Button>
+      {/* <Select options={options} onOptionChange={handleOptionChange} mr="20px" /> */}
     </FlexButton>
   )
 }

@@ -23,6 +23,10 @@ export const footerLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) => [
         label: t('Documentation'),
         href: 'https://fortcake.gitbook.io/fortcake/3.-core-features',
       },
+      {
+        label: t('Submit your game'),
+        href: 'https://forms.gle/dwGAFXQ9yP8e5VcR8',
+      },
     ],
   },
   {

@@ -57,6 +57,7 @@ const SubmitGamesNav: MenuItemsType = {
   label: 'Submit your game',
   href: 'https://forms.gle/dwGAFXQ9yP8e5VcR8',
   showOnMobile: false,
+  isExternal: true,
 }
 
 const Menu = (props) => {

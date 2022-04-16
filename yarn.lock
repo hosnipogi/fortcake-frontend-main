@@ -10686,8 +10686,8 @@ form-data@~2.3.2:
     mime-types "^2.1.12"
 
 fortcake-config-files@fortcake/fortcake-config-files:
-  version "0.0.2"
-  resolved "https://codeload.github.com/fortcake/fortcake-config-files/tar.gz/6c26d8299278ced584cc47efe2d40ae8b65f5916"
+  version "0.0.3"
+  resolved "https://codeload.github.com/fortcake/fortcake-config-files/tar.gz/b879943c9272470ae1f48ccbfba5fbba4c664c67"
   dependencies:
     typescript "^4.6.2"
 

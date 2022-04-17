@@ -245,7 +245,7 @@ const Home: React.FC = () => {
               <div>
                 <p>
                   FORTCAKE&apos;s built in Swap feature, Trade your favorite game tokens, No registration, no problem.
-                  Connect your wallet, and exchange any token on the Binance, Ethereum or Polygon blockchain in seconds.
+                  Connect your wallet, and exchange any token on the Binance blockchain in seconds.
                 </p>
               </div>
             </Text>

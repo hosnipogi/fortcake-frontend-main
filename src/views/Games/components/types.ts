@@ -1,3 +1,5 @@
+import { Game } from 'state/types'
+
 export type TableProps = {
   data?: TableDataTypes[]
   selectedFilters?: string
@@ -68,12 +70,10 @@ export type ChainProps = {
   address: string
 }
 
-export interface GameProps {
-  title: string
-  subtitle: string
-  logo: string
-  cta: string
-  symbol: string
-  votes: number
+export type GameProps = Omit<Game, 'address' | 'chain'> & {
   chain: ChainProps[]
+  price?: {
+    bnb: number
+    usd: number
+  }
 }

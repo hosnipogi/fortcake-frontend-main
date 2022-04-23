@@ -9,6 +9,7 @@ import {
   ChevronUpIcon,
   ChevronDownIcon,
   useMatchBreakpoints,
+  BinanceIcon,
 } from 'fortcake-uikit-v2'
 import axios from 'axios'
 import { GameImage } from 'components/GameImage'
@@ -43,6 +44,10 @@ const TokenWrapper = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-right: 18px;
   }
+`
+
+const CurrencyText = styled(Text)`
+  color: ${({ theme }) => (theme.isDark ? 'lightblue' : '#4fa6c3')};
 `
 
 const Image = styled(GameImage)`
@@ -81,15 +86,7 @@ const Rating: React.FC<{ votes: number }> = ({ votes }) => {
   return (
     <Flex alignItems="center" justifyContent="flex-end" width={isMobile ? '100%' : ''}>
       <Img src={ratingIcon} width={18} height={18} mr="8px" style={{ width: '18px' }} />
-      <Text
-        color="text"
-        fontSize="1"
-        fontWeight="bold"
-        as="h3"
-        style={{
-          minWidth: isMobile ? '' : '54px',
-        }}
-      >
+      <Text color="text" fontSize="1" fontWeight="bold" as="h3">
         {votes} %
       </Text>
     </Flex>
@@ -97,16 +94,6 @@ const Rating: React.FC<{ votes: number }> = ({ votes }) => {
 }
 
 const ChainAddress: React.FC<{ chain: ChainProps[] }> = ({ chain }) => {
-  // const initValue = [{ label: 'Swap', value: '' }]
-  // const availableChain = chain.map((c) => ({ label: c.chain, value: c.address }))
-  // const options = initValue.concat(availableChain)
-  // const handleOptionChange = ({ label, value }): { label: string; value: string } => {
-  //     const swapRedirect = `https://${label.toLowerCase()}.fortcake.io/swap/${value}`
-  //   if (label === 'Swap' || !value) return
-  //   // eslint-disable-next-line no-unused-expressions
-  //   window.open(swapRedirect, '_blank') || window.location.replace(swapRedirect)
-  // }
-  // const url = `https://${chain[0].chain}.fortcake.io/swap/${chain[0].address}`
   const url = `/swap/${chain[0].address}`
 
   return (
@@ -127,6 +114,7 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
   cta,
   chain,
   actionPanelOpen,
+  price,
 }) => {
   const { isMobile, isTablet } = useMatchBreakpoints()
   const [base64, setBase64] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
@@ -169,11 +157,27 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
               )}
             </TokenWrapper>
             <Flex flexDirection="column" alignItems="flex-end" style={{ width: '100%' }}>
-              <Flex flexDirection="column" alignItems="center">
+              <Flex flexDirection="column">
                 <Rating votes={votes} />
                 <Text color="secondary" bold textTransform="uppercase" textAlign="right">
                   {title}
                 </Text>
+                <Flex>
+                  <Flex mr="10px">
+                    <BinanceIcon mr="5px" width="15px" />
+                    <Text color="warning" bold fontSize="1">
+                      {price.bnb}
+                    </Text>
+                  </Flex>
+                  <Flex>
+                    <CurrencyText bold fontSize="1" mr="5px">
+                      USD
+                    </CurrencyText>
+                    <CurrencyText bold fontSize="1">
+                      {price.usd.toFixed(price.usd > 1 ? 2 : 4)}
+                    </CurrencyText>
+                  </Flex>
+                </Flex>
               </Flex>
               <Flex mt="20px">
                 <Text textAlign="right">{subtitle}</Text>
@@ -206,22 +210,38 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
             <Image image={base64} width={90} height={90} />
           )}
         </TokenWrapper>
-        <Flex flexDirection="column" style={{ width: '100%' }}>
-          <Flex alignItems="center">
-            <Text color="secondary" fontSize={isTablet ? '16px' : '12px'} bold textTransform="uppercase">
-              {title}
-            </Text>
+        <Flex justifyContent="space-between" style={{ width: '100%' }}>
+          <Flex flexDirection="column" style={{ width: '65%' }}>
+            <Flex alignItems="center">
+              <Text color="secondary" fontSize={isTablet ? '16px' : '12px'} bold textTransform="uppercase">
+                {title}
+              </Text>
+            </Flex>
+            <Flex justifyContent="space-between">
+              <Text bold>{subtitle}</Text>
+            </Flex>
+            <Flex alignItems="center" justifyContent="space-between" mt="20px" ml="4px">
+              <Flex>
+                <ChainAddress chain={chain} />
+                <Button className="externalLinks" as="a" variant="secondary" href={cta} scale="sm">
+                  Find out more
+                </Button>
+              </Flex>
+            </Flex>
           </Flex>
-          <Flex justifyContent="space-between">
-            <Text bold>{subtitle}</Text>
+          <Flex flexDirection="column" justifyContent="center">
             <Rating votes={votes} />
-          </Flex>
-          <Flex alignItems="center" justifyContent="space-between" mt="20px" ml="4px">
-            <Flex>
-              <ChainAddress chain={chain} />
-              <Button className="externalLinks" as="a" variant="secondary" href={cta} scale="sm">
-                Find out more
-              </Button>
+            <Flex flexDirection="column">
+              <Flex justifyContent="space-between">
+                <BinanceIcon mr="10px" />
+                <Text color="warning" bold textAlign="right">
+                  {price.bnb}
+                </Text>
+              </Flex>
+              <Flex justifyContent="space-between">
+                <CurrencyText bold>USD</CurrencyText>
+                <CurrencyText bold>{price.usd.toFixed(price.usd > 1 ? 2 : 4)}</CurrencyText>
+              </Flex>
             </Flex>
           </Flex>
         </Flex>

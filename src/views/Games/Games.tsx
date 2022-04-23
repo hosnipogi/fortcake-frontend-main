@@ -70,7 +70,7 @@ const Games: React.FC = () => {
   chosenGames.current = chosenGamesMemoized.length
 
   const rowData = chosenGamesMemoized.map((game) => {
-    const { title, subtitle, logo, cta, symbol, votes, chain } = game
+    const { title, subtitle, logo, cta, symbol, votes, chain, price } = game
 
     const row: RowProps = {
       game: {
@@ -81,6 +81,7 @@ const Games: React.FC = () => {
         symbol,
         votes,
         chain,
+        price,
       },
     }
 

@@ -7,15 +7,21 @@ export const Heading = styled(HeadingUIKit)`
   color: ${({ theme }) => (theme.isDark ? theme.colors.textSubtle : theme.colors.textDarkerContrast)};
 `
 
-export const Text = styled(TextUIKit)<{ $customColor?: keyof Colors; $contrast?: 1 | 2 }>`
+enum Contrast {
+  textDarkContrast = 1,
+  textDarkerContrast,
+}
+
+export const Text = styled(TextUIKit)<{
+  $customColor?: keyof Colors
+  $contrast?: 1 | 2
+}>`
   color: ${({ theme, $customColor, $contrast }) =>
     theme.isDark
       ? theme.colors.textSubtle
       : !$customColor
-      ? $contrast && $contrast === 1
-        ? theme.colors.textDarkContrast
-        : $contrast && $contrast === 2
-        ? theme.colors.textDarkerContrast
+      ? $contrast
+        ? theme.colors[Contrast[$contrast]]
         : theme.colors.textSubtle2
       : theme.colors[$customColor]};
 `

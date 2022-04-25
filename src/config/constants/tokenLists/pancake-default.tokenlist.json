@@ -98,14 +98,6 @@
       "chainId": 56
     },
     {
-      "name": "Mobox",
-      "address": "0x3203c9e46ca618c8c1ce5dc67e7e9d75f5da2377",
-      "symbol": "MBOX",
-      "decimals": 18,
-      "chainId": 56
-      "logoURI": "https://bscscan.com/token/images/mobox_32.png"
-    },
-    {
       "name": "WBNB Token",
       "symbol": "WBNB",
       "address": "0xae13d989dac2f0debff460ac112a837c89baa7cd",

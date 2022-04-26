@@ -98,14 +98,6 @@
       "chainId": 56
     },
     {
-      "name": "Mobox",
-      "address": "0x3203c9e46ca618c8c1ce5dc67e7e9d75f5da2377",
-      "symbol": "MBOX",
-      "decimals": 18,
-      "chainId": 56,
-      "logoURI": "https://bscscan.com/token/images/mobox_32.png"
-    },
-    {
       "name": "Splintershards",
       "address": "0x1633b7157e7638c4d6593436111bf125ee74703f",
       "symbol": "SPS",

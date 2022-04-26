@@ -106,13 +106,77 @@
       "logoURI": "https://bscscan.com/token/images/mobox_32.png"
     },
     {
+      "name": "Splintershards",
+      "address": "0x1633b7157e7638c4d6593436111bf125ee74703f",
+      "symbol": "SPS",
+      "decimals": 18,
+      "chainId": 56,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/11035.png"
+    },
+    {
+      "name": "Bomb Crypto",
+      "address": "0x00e1656e45f18ec6747f5a8496fd39b50b38396d",
+      "symbol": "BCOIN",
+      "decimals": 18,
+      "chainId": 56,
+      "logoURI": "https://bscscan.com/token/images/bombcrypto_32.png"
+    },
+    {
+      "name": "Mydefipet",
+      "address": "0xfb62ae373aca027177d1c18ee0862817f9080d08",
+      "symbol": "DPET",
+      "decimals": 18,
+      "chainId": 56,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/9665.png"
+    },
+    {
+      "name": "My Master War",
+      "address": "0xf3147987a00d35eecc10c731269003ca093740ca",
+      "symbol": "MAT",
+      "decimals": 18,
+      "chainId": 56,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/11945.png"
+    },
+    {
+      "name": "Kawaii Islands",
+      "address": "0x257a8d1e03d17b8535a182301f15290f11674b53",
+      "symbol": "KWT",
+      "decimals": 18,
+      "chainId": 56,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/12313.png"
+    },
+    {
+      "chainId": 56,
+      "address": "0x6289812163af9421e566b3d74774074fac2a0441",
+      "name": "Crusaders of Crypto",
+      "symbol": "CRUSADER",
+      "decimals": 9,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/10976.png"
+    },
+    {
+      "chainId": 56,
+      "address": "0xd6f53e7fa7c6c83d749255c06e9444e3325ab53e",
+      "name": "Force Cowboy",
+      "symbol": "FCB",
+      "decimals": 18,
+      "logoURI": "https://lcw.nyc3.cdn.digitaloceanspaces.com/production/currencies/64/fcb.webp"
+    },
+    {
+      "chainId": 56,
+      "address": "0x24d787e9b88cb62d74e961c1c1d78e4ee47618e5",
+      "name": "BinaPet",
+      "symbol": "BPET",
+      "decimals": 18,
+      "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/11263.png"
+    },
+    {
       "name": "WBNB Token",
       "symbol": "WBNB",
       "address": "0xae13d989dac2f0debff460ac112a837c89baa7cd",
       "decimals": 18,
       "chainId": 97,
       "logoURI": "https://s2.coinmarketcap.com/static/img/coins/64x64/7192.png"
-    },
+    },  
     {
       "name": "BUSD Token",
       "address": "0x615446C0Fd5eA8A5FD7fb763f3FC2C58774474F3",

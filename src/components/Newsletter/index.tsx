@@ -77,7 +77,7 @@ const SearchInput: React.FC = () => {
       }
 
       const { data } = await axios.request(options)
-      if (data[0].email === email) {
+      if (data[0].email === email.toLowerCase()) {
         setIsLoading(false)
         setSuccess(true)
       }

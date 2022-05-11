@@ -9,6 +9,7 @@ import useScrollOnRouteChange from 'hooks/useScrollOnRouteChange'
 import { usePollBlockNumber } from 'state/block/hooks'
 import { usePollCoreFarmData } from 'state/farms/hooks'
 import { useFetchProfile } from 'state/profile/hooks'
+import { useFetchGames } from 'state/games/hooks'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
@@ -46,6 +47,7 @@ const App: React.FC = () => {
   usePollCoreFarmData()
   useScrollOnRouteChange()
   useUserAgent()
+  useFetchGames()
 
   return (
     <Router history={history}>

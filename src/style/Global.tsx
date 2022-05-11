@@ -9,6 +9,10 @@ declare module 'styled-components' {
   export interface DefaultTheme extends PancakeTheme {}
 }
 
+export enum GLOBALCLASSES {
+  GAMESTYLES = 'gameStyles',
+}
+
 const GlobalStyle = createGlobalStyle`
   * {
     font-family: 'Kanit', sans-serif;
@@ -23,6 +27,11 @@ const GlobalStyle = createGlobalStyle`
     img {
       height: auto;
       max-width: 100%;
+    }
+    &.${GLOBALCLASSES.GAMESTYLES} {
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 `

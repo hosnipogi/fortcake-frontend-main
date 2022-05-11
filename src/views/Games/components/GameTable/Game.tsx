@@ -14,6 +14,7 @@ import {
 import axios from 'axios'
 import { GameImage } from 'components/GameImage'
 import { Link } from 'react-router-dom'
+import useTheme from 'hooks/useTheme'
 import { GameProps, ChainProps } from '../types'
 // import Select from '../Select'
 
@@ -38,8 +39,12 @@ const Container = styled.div`
 
 const TokenWrapper = styled.div`
   width: 100px;
-  align-self: center;
-  margin-right: 12px;
+  align-self: flex-end;
+
+  ${({ theme }) => theme.mediaQueries.xs} {
+    margin-right: 12px;
+    align-self: center;
+  }
 
   ${({ theme }) => theme.mediaQueries.sm} {
     margin-right: 18px;
@@ -65,6 +70,13 @@ const FlexButton = styled(Flex)`
     a:first-child {
       margin-right: 20px;
     }
+  }
+`
+
+const FlexMobileContentWrapper = styled(Flex)`
+  flex-direction: column;
+  ${({ theme }) => theme.mediaQueries.xs} {
+    flex-direction: row;
   }
 `
 
@@ -115,10 +127,16 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
   chain,
   actionPanelOpen,
   price,
+  category,
 }) => {
   const { isMobile, isTablet } = useMatchBreakpoints()
   const [base64, setBase64] = useState('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')
   const [imgLoading, setImgLoading] = useState(true)
+  const { isDark } = useTheme()
+
+  const categoryBtnStyle = {
+    backgroundColor: !isDark && '#a9a9a9',
+  }
 
   useEffect(() => {
     const controller = new AbortController()
@@ -148,7 +166,7 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
     if (isMobile) {
       return (
         <>
-          <Flex justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
+          <FlexMobileContentWrapper justifyContent="space-between" alignItems="center" style={{ width: '100%' }}>
             <TokenWrapper>
               {imgLoading ? (
                 <Skeleton variant="circle" animation="waves" width={90} height={90} />
@@ -179,11 +197,16 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
                   </Flex>
                 </Flex>
               </Flex>
-              <Flex mt="20px">
+              <Flex mt="20px" flexDirection="column">
                 <Text textAlign="right">{subtitle}</Text>
+                <Flex justifyContent="flex-end" mt="4">
+                  <Button variant="light" scale="xs" style={categoryBtnStyle}>
+                    {category}
+                  </Button>
+                </Flex>
               </Flex>
             </Flex>
-          </Flex>
+          </FlexMobileContentWrapper>
           <Flex justifyContent="flex-end" mt="20px" style={{ width: '100%' }}>
             <ChainAddress chain={chain} />
             <Button className="externalLinks" as="a" variant="secondary" href={cta} scale="sm">
@@ -213,9 +236,12 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
         <Flex justifyContent="space-between" style={{ width: '100%' }}>
           <Flex flexDirection="column" style={{ width: '65%' }}>
             <Flex alignItems="center">
-              <Text color="secondary" fontSize={isTablet ? '16px' : '12px'} bold textTransform="uppercase">
+              <Text color="secondary" fontSize={isTablet ? '16px' : '12px'} bold textTransform="uppercase" mr="2">
                 {title}
               </Text>
+              <Button variant="light" scale="xs" style={categoryBtnStyle}>
+                {category}
+              </Button>
             </Flex>
             <Flex justifyContent="space-between">
               <Text bold>{subtitle}</Text>

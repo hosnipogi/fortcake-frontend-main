@@ -1,36 +1,71 @@
+/* eslint-disable no-multi-assign */
 import React, { useEffect, useCallback, useState, useMemo, useRef } from 'react'
 import { useWeb3React } from '@web3-react/core'
 import { Heading, RowType, Text, Flex, useMatchBreakpoints } from 'fortcake-uikit-v2'
 import Page from 'components/Layout/Page'
-import { useGames } from 'state/games/hooks'
+import { useGames, useFetchGamePrices } from 'state/games/hooks'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { useTranslation } from 'contexts/Localization'
+import styled from 'styled-components'
 import PageHeader from 'components/PageHeader'
 import SearchInput from 'components/SearchInput'
-// import Select, { OptionProps } from 'components/Select/Select'
+import Select, { OptionProps } from 'components/Select/Select'
+import { CustomFooter as Footer } from 'components/Menu'
+import ScoresHelper from './components/ScoresHelper'
 import LoadingSkeleton from './components/Loading'
 import Table from './components/GameTable/GameTable'
+import ParallaxBubbles from './components/ParallaxBubbles'
 import { RowProps } from './components/GameTable/Row'
-import { DesktopColumnSchema } from './components/types'
+import useInitUI from './hooks/useInitUI'
+import { GameProps, DesktopColumnSchema, Categories } from './components/types'
 import LogoCake from '../../assets/images/logo/logo_glasses.png'
 import useTheme from '../../hooks/useTheme'
 import { H2, LandingText, ControlContainer, LabelWrapper, FilterContainer, StyledImage } from './styles'
 
-const NUMBER_OF_GAMES_VISIBLE = 12
+const NUMBER_OF_GAMES_VISIBLE = 120
+
+const LaxWrapper = styled.div`
+  perspective: 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+  &::-webkit-scrollbar {
+    z-index: 999;
+  }
+`
+
+const LaxContent = styled.div`
+  height: 100%;
+  transform-style: preserve-3d;
+  position: relative;
+`
 
 const Games: React.FC = () => {
   const { isDark } = useTheme()
   const { t } = useTranslation()
-  const { isLoading, data: games, userDataLoaded } = useGames()
   const [query, setQuery] = useState('')
   const { account } = useWeb3React()
-  const [numberOfGamesVisible, setNumberOfGamesVisible] = useState(NUMBER_OF_GAMES_VISIBLE)
-  // const [sortOption, setSortOption] = useState('all')
   const { observerRef, isIntersecting } = useIntersectionObserver()
   const chosenGames = useRef(0)
   const { isMobile } = useMatchBreakpoints()
+  const [numberOfGamesVisible, setNumberOfGamesVisible] = useState(NUMBER_OF_GAMES_VISIBLE)
+  const { data: games, userDataLoaded } = useGames()
+  const [sortOption, setSortOption] = useState('all')
+  const ContainerRef = useRef(null)
 
   const userDataReady = !account || (!!account && userDataLoaded)
+
+  const selectOptions = useMemo(() => {
+    const categories = Object.keys(Categories).map((category) => ({
+      label: Categories[category],
+      value: Categories[category],
+    }))
+
+    return [{ label: 'All', value: 'all' }, ...categories]
+  }, [])
+
+  useFetchGamePrices()
+  useInitUI(ContainerRef)
 
   useEffect(() => {
     if (isIntersecting) {
@@ -44,13 +79,16 @@ const Games: React.FC = () => {
   }, [isIntersecting])
 
   const searchGame = useCallback(
-    (gamesList) => {
+    (gamesList: GameProps[]) => {
+      modifyParallaxBubbleStyles(false)
+      if (sortOption !== 'all') modifyParallaxBubbleStyles()
       if (!query) return gamesList
+      modifyParallaxBubbleStyles()
       const lowercaseQuery = query.toLowerCase()
       const gamesToDisplay = gamesList.filter((game) => game.title.toLowerCase().includes(lowercaseQuery))
       return gamesToDisplay
     },
-    [query],
+    [query, sortOption],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,30 +96,20 @@ const Games: React.FC = () => {
   }
 
   const chosenGamesMemoized = useMemo(() => {
-    // let activeGames = games
+    let activeGames = games
+    if (sortOption !== 'all') {
+      activeGames = activeGames.filter((game) => sortOption === game.category)
+    }
 
-    // if (sortOption !== 'all') {
-    //   activeGames = activeGames.filter((game) => game.chain.some(({ chain }) => chain === sortOption) && game)
-    // }
-
-    return searchGame(games).slice(0, numberOfGamesVisible)
-  }, [games, numberOfGamesVisible, searchGame])
+    return searchGame(activeGames).slice(0, numberOfGamesVisible)
+  }, [games, numberOfGamesVisible, searchGame, sortOption])
 
   chosenGames.current = chosenGamesMemoized.length
 
   const rowData = chosenGamesMemoized.map((game) => {
-    const { title, subtitle, logo, cta, symbol, votes, chain, price } = game
-
     const row: RowProps = {
       game: {
-        title,
-        subtitle,
-        logo,
-        cta,
-        symbol,
-        votes,
-        chain,
-        price,
+        ...game,
       },
     }
 
@@ -105,12 +133,16 @@ const Games: React.FC = () => {
       sortable: column.sortable,
     }))
 
-    return <Table data={rowData} columns={columns} userDataReady={userDataReady} />
+    return rowData.length ? (
+      <Table data={rowData} columns={columns} userDataReady={userDataReady} />
+    ) : (
+      <LoadingSkeleton />
+    )
   }
 
-  // const handleSortOptionChange = (option: OptionProps): void => {
-  //   setSortOption(option.value)
-  // }
+  const handleSortOptionChange = (option: OptionProps): void => {
+    setSortOption(option.value)
+  }
 
   const mobileHeaderStyle = isMobile
     ? {
@@ -120,7 +152,7 @@ const Games: React.FC = () => {
     : {}
 
   return (
-    <>
+    <LaxWrapper ref={ContainerRef}>
       <PageHeader background="transparent" mt={!isMobile && '5vh'}>
         <Flex justifyContent="space-between">
           <LandingText>
@@ -153,44 +185,47 @@ const Games: React.FC = () => {
           <StyledImage src={LogoCake} width={430} height={336} mt="20px" loading="lazy" />
         </Flex>
       </PageHeader>
-      <Page>
-        <ControlContainer>
-          <FilterContainer>
-            {/* <LabelWrapper>
-              <Text textTransform="uppercase">{t('Sort by')}</Text>
-              <Select
-                options={[
-                  {
-                    label: t('All'),
-                    value: 'all',
-                  },
-                  {
-                    label: t('BNB'),
-                    value: 'BNB',
-                  },
-                  {
-                    label: t('ETH'),
-                    value: 'ETH',
-                  },
-                  {
-                    label: t('POL'),
-                    value: 'POL',
-                  },
-                ]}
-                onOptionChange={handleSortOptionChange}
-              />
-            </LabelWrapper> */}
-            <LabelWrapper style={{ marginLeft: 16 }}>
-              <Text textTransform="uppercase">{t('Search')}</Text>
-              <SearchInput onChange={handleChangeQuery} placeholder="Search Games" />
-            </LabelWrapper>
-          </FilterContainer>
-        </ControlContainer>
-        {isLoading ? <LoadingSkeleton /> : renderContent()}
-        <div ref={observerRef} />
-      </Page>
-    </>
+      <LaxContent>
+        <ParallaxBubbles />
+        <Page>
+          <ControlContainer>
+            <FilterContainer>
+              <LabelWrapper>
+                <Text textTransform="uppercase">{t('Search')}</Text>
+                <SearchInput onChange={handleChangeQuery} placeholder="Search Games" />
+              </LabelWrapper>
+              <LabelWrapper style={{ marginLeft: 24 }}>
+                <Text textTransform="uppercase">{t('Category')}</Text>
+                <Select onOptionChange={handleSortOptionChange} options={selectOptions} />
+              </LabelWrapper>
+            </FilterContainer>
+            <ScoresHelper />
+          </ControlContainer>
+          {renderContent()}
+          <div ref={observerRef} />
+        </Page>
+        <Footer />
+      </LaxContent>
+    </LaxWrapper>
   )
 }
 
 export default Games
+
+function modifyParallaxBubbleStyles(addClass = true) {
+  const styleClassName = 'overrideStyles'
+  const bubblesClassName = 'parallaxBubbles'
+  const bubbles = Array.from(document.getElementsByClassName(bubblesClassName) as HTMLCollectionOf<HTMLElement>)
+  bubbles.forEach((bubble) => {
+    if (addClass) {
+      bubble.classList.add(styleClassName)
+    } else {
+      bubble.classList.remove(styleClassName)
+    }
+
+    setTimeout(() => {
+      // eslint-disable-next-line no-param-reassign
+      bubble.style.opacity = addClass ? '0' : '1'
+    }, 400)
+  })
+}

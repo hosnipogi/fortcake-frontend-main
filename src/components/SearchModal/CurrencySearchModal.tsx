@@ -9,7 +9,6 @@ import {
   ModalBody,
   InjectedModalProps,
   Heading,
-  Button,
 } from 'fortcake-uikit-v2'
 import styled from 'styled-components'
 import usePrevious from 'hooks/usePreviousValue'

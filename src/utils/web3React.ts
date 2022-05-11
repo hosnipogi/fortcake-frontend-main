@@ -1,6 +1,7 @@
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { AbstractConnector } from '@web3-react/abstract-connector'
+// import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { BscConnector } from '@binance-chain/bsc-connector'
 import { ConnectorNames } from 'fortcake-uikit-v2'
 import { ethers } from 'ethers'
@@ -15,7 +16,6 @@ const injected = new InjectedConnector({ supportedChainIds: [chainId] })
 const walletconnect = new WalletConnectConnector({
   rpc: { [chainId]: rpcUrl },
   qrcode: true,
-  pollingInterval: POLLING_INTERVAL,
 })
 
 const bscConnector = new BscConnector({ supportedChainIds: [chainId] })
@@ -24,7 +24,16 @@ export const connectorsByName: { [connectorName in ConnectorNames]: any } = {
   [ConnectorNames.Injected]: injected,
   [ConnectorNames.WalletConnect]: walletconnect,
   [ConnectorNames.BSC]: bscConnector,
-}
+  [ConnectorNames.WalletLink]: async () => {
+    const { WalletLinkConnector } = await import('@web3-react/walletlink-connector')
+    return new WalletLinkConnector({
+      url: rpcUrl,
+      appName: 'Fortcake',
+      appLogoUrl: 'https://www.fortcake.io/images/coins/FORTCAKE.png',
+      supportedChainIds: [56, 97],
+    })
+  },
+} as const
 
 export const getLibrary = (provider): ethers.providers.Web3Provider => {
   const library = new ethers.providers.Web3Provider(provider)

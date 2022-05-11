@@ -26,7 +26,7 @@ export const ControlContainer = styled.div`
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 16px 32px;
+    padding: 16px 0 16px 32px;
     margin-bottom: 0;
   }
 `

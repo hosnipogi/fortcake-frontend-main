@@ -1,15 +1,6 @@
-interface GamesConfig {
-  title: string
-  subtitle: string
-  logo: string
-  cta: string
-  symbol: string
-  votes: number
-  chain: string
-  address: string
-}
+import { Game } from 'state/types'
 
-const games: GamesConfig[] = [
+const games: Game[] = [
   // {
   //   title: 'Axie Infinity',
   //   subtitle: 'Axie Infinity is a NFT-based online 2D game, powered by ETH and SLP crypto-currency.',

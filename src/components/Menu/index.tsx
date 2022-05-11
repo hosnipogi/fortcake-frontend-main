@@ -2,7 +2,7 @@ import React from 'react'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Menu as UikitMenu, Flex, GamesLink } from 'fortcake-uikit-v2'
+import { Menu as UikitMenu, Flex, GamesLink, Footer } from 'fortcake-uikit-v2'
 import { languageList } from 'config/localization/languages'
 import { useTranslation } from 'contexts/Localization'
 import useTheme from 'hooks/useTheme'
@@ -10,9 +10,7 @@ import config, { FooterLinks } from './config/config'
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
 import NewsLetter from '../Newsletter'
 import UserMenu from './UserMenu'
-// import GlobalSettings from './GlobalSettings'
 
-// logos
 import LogoMain from '../../assets/images/logo/logo_main.png'
 
 const LogoImg = styled.img`
@@ -28,24 +26,7 @@ const LogoImg = styled.img`
   }
 `
 
-// const StyledLink = styled(Link)`
-//   font-size: 16px;
-//   ${({ theme }) => theme.mediaQueries.sm} {
-//     font-size: 12px;
-//   }
-//   ${({ theme }) => theme.mediaQueries.md} {
-//     font-size: 16px;
-//   }
-// `
-
-const DappLink: React.FC = () => {
-  return <UserMenu />
-  // return (
-  //   <Button as="button" variant="primary" scale="sm">
-  //     <StyledLink to={GamesLink.link}>Launch App</StyledLink>
-  //   </Button>
-  // )
-}
+const DappLink: React.FC = () => <UserMenu />
 
 const HomeLink: React.FC = () => (
   <Flex alignItems="center">
@@ -89,3 +70,21 @@ const Menu = (props) => {
 }
 
 export default Menu
+
+export const CustomFooter = () => {
+  const { isDark, toggleTheme } = useTheme()
+  const { currentLanguage, setLanguage, t } = useTranslation()
+  return (
+    <Footer
+      items={FooterLinks(t)}
+      isDark={isDark}
+      toggleTheme={toggleTheme}
+      newsLetterComponent={<NewsLetter />}
+      buyCakeLabel=""
+      currentLang={currentLanguage.code}
+      langs={languageList}
+      setLang={setLanguage}
+      pb={['84px', null, '40px']}
+    />
+  )
+}

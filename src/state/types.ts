@@ -13,6 +13,7 @@ import {
   TranslatableText,
   DeserializedFarmConfig,
 } from 'config/constants/types'
+import { Categories as GameCategories, Platforms as GamePlatforms } from 'views/Games/components/types'
 import { NftToken, State as NftMarketState } from './nftMarket/types'
 
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, State, unknown, AnyAction>
@@ -57,7 +58,12 @@ export interface Game {
   symbol: string
   votes: number
   chain: string
-  address: string
+  category?: GameCategories
+  address?: string
+  twitter?: string
+  telegram?: string
+  discord?: string
+  platform?: GamePlatforms[]
 }
 
 export interface DeserializedFarm extends DeserializedFarmConfig {
@@ -148,9 +154,15 @@ export interface SerializedFarmsState {
 
 export interface GamesState {
   data: Game[]
-  loadArchivedFarmsData: boolean
   userDataLoaded: boolean
-  loadingKeys: Record<string, boolean>
+  isLoading: boolean
+  prices: {
+    address: string
+    price: {
+      bnb: number
+      usd: number
+    }
+  }[]
 }
 
 export interface DeserializedFarmsState {

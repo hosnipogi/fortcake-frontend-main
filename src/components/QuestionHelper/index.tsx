@@ -22,7 +22,7 @@ const QuestionHelper: React.FC<Props> = ({ text, placement = 'right-end', size =
     <Box {...props}>
       {tooltipVisible && tooltip}
       <QuestionWrapper ref={targetRef}>
-        <HelpIcon color="textSubtle" width={size} />
+        <HelpIcon color="text" width={size} />
       </QuestionWrapper>
     </Box>
   )

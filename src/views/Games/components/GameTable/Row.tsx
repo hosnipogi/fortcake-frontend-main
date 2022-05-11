@@ -30,6 +30,17 @@ const StyledTr = styled.tr`
   border-bottom: 2px solid ${({ theme }) => theme.colors.cardBorder};
 `
 
+const StyledTd = styled.td`
+  ${({ theme }) =>
+    theme.isDark
+      ? `background-color: rgba(0, 0, 0, 0.4)`
+      : `background-image: linear-gradient(101deg, #f4f4f4bf, #ffffffcf, #dfdfdfcc)`};
+  border-radius: 14px;
+  box-shadow: 2px 9px 11px 2px ${({ theme }) => (theme.isDark ? 'rgb(6 6 6 / 54%)' : 'rgb(6 6 6 / 10%)')};
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-left: 3px solid rgba(255, 255, 255, 0.2);
+`
+
 const Row: React.FunctionComponent<
   RowProps & {
     closePanelEvent: Event
@@ -59,7 +70,7 @@ const Row: React.FunctionComponent<
   return (
     <>
       <StyledTr onClick={toggleDescription}>
-        <td>
+        <StyledTd className="tilted">
           <Flex alignItems="center" justifyContent="space-between" width="100%">
             <CellInner>
               <Game
@@ -69,12 +80,12 @@ const Row: React.FunctionComponent<
               />
             </CellInner>
           </Flex>
-        </td>
+        </StyledTd>
       </StyledTr>
       {shouldRenderRow && (
         <tr>
           <td colSpan={6}>
-            <ActionPanel details={game?.subtitle} expanded={showDescription} />
+            <ActionPanel details={{ ...game, address: game.chain[0].address }} expanded={showDescription} />
           </td>
         </tr>
       )}

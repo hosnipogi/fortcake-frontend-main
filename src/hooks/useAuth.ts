@@ -24,9 +24,11 @@ const useAuth = () => {
   const { toastError } = useToast()
 
   const login = useCallback(
-    (connectorID: ConnectorNames) => {
-      const connector = connectorsByName[connectorID]
-      if (connector) {
+    async (connectorID: ConnectorNames) => {
+      const connectorOrGetConnector = connectorsByName[connectorID]
+      const connector =
+        typeof connectorOrGetConnector !== 'function' ? connectorOrGetConnector : await connectorOrGetConnector()
+      if (typeof connector !== 'function' && connector) {
         activate(connector, async (error: Error) => {
           if (error instanceof UnsupportedChainIdError) {
             const hasSetup = await setupNetwork()

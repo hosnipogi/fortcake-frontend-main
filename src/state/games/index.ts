@@ -1,174 +1,90 @@
-// import type {
-//   UnknownAsyncThunkFulfilledAction,
-//   UnknownAsyncThunkPendingAction,
-//   UnknownAsyncThunkRejectedAction,
-//   // eslint-disable-next-line import/no-unresolved
-// } from '@reduxjs/toolkit/dist/matchers'
-import { createSlice } from '@reduxjs/toolkit'
-// import stringify from 'fast-json-stable-stringify'
-import gamesConfig from 'config/constants/games'
-// import isArchivedPid from 'utils/farmHelpers'
-// import type { AppState } from 'state'
-// import priceHelperLpsConfig from 'config/constants/priceHelperLps'
-// import fetchFarms from './fetchFarms'
-// import fetchFarmsPrices from './fetchFarmsPrices'
-// import {
-//   fetchFarmUserEarnings,
-//   fetchFarmUserAllowances,
-//   fetchFarmUserTokenBalances,
-//   fetchFarmUserStakedBalances,
-// } from './fetchFarmUser'
-import { GamesState } from '../types'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import type { AppState } from 'state'
+import axios from 'axios'
+import games from 'config/constants/games'
+import { GamesState, Game } from '../types'
 
-const noAccountFarmConfig = gamesConfig.map((farm) => ({
-  ...farm,
-  userData: {
-    allowance: '0',
-    tokenBalance: '0',
-    stakedBalance: '0',
-    earnings: '0',
-  },
-}))
+const airTableEndpoint = `https://api.fortcake.io/games`
+const coinGeckoEndpoint = `https://api.coingecko.com/api/v3/simple/token_price/binance-smart-chain?vs_currencies=bnb,usd&contract_addresses=`
 
 const initialState: GamesState = {
-  data: noAccountFarmConfig,
-  loadArchivedFarmsData: false,
+  data: games,
   userDataLoaded: false,
-  loadingKeys: {},
+  prices: [
+    {
+      address: '',
+      price: {
+        bnb: 0,
+        usd: 0,
+      },
+    },
+  ],
+  isLoading: false,
 }
 
-// export const nonArchivedFarms = gamesConfig.filter(({ pid }) => !isArchivedPid(pid))
+export const fetchGames = createAsyncThunk('Games/fetchGames', async () => {
+  const { data } = await axios.get<Game[]>(airTableEndpoint)
+  return data
+})
 
-// Async thunks
-// export const fetchFarmsPublicDataAsync = createAsyncThunk<
-//   SerializedFarm[],
-//   number[],
-//   {
-//     state: AppState
-//   }
-// >(
-//   'farms/fetchFarmsPublicDataAsync',
-//   async (pids) => {
-//     const farmsToFetch = gamesConfig.filter((farmConfig) => pids.includes(farmConfig.pid))
-//     // Add price helper farms
-//     const farmsWithPriceHelpers = farmsToFetch.concat(priceHelperLpsConfig)
+export const fetchGamePrices = createAsyncThunk<any, void, { state: AppState }>(
+  'Games/fetchGamePrices',
+  async (_, { getState }) => {
+    const {
+      games: { data: allGames },
+    } = getState()
 
-//     const farms = await fetchFarms(farmsWithPriceHelpers)
-//     const farmsWithPrices = await fetchFarmsPrices(farms)
+    const reducedAddresses = allGames.reduce((addresses, game, index) => {
+      let addrs = addresses
+      addrs += `${game.address}${index === allGames.length - 1 ? '' : ','}`
+      return addrs
+    }, '')
 
-//     // Filter out price helper LP config farms
-//     const farmsWithoutHelperLps = farmsWithPrices.filter((farm: SerializedFarm) => {
-//       return farm.pid || farm.pid === 0
-//     })
+    const geckoWithAllAddresses = coinGeckoEndpoint + reducedAddresses
+    const { data } = await axios.get<{
+      [address: string]: { bnb: string; usd: string }
+    }>(geckoWithAllAddresses)
 
-//     return farmsWithoutHelperLps
-//   },
-//   {
-//     condition: (arg, { getState }) => {
-//       const { farms } = getState()
-//       if (farms.loadingKeys[stringify({ type: fetchFarmsPublicDataAsync.typePrefix, arg })]) {
-//         console.debug('farms action is fetching, skipping here')
-//         return false
-//       }
-//       return true
-//     },
-//   },
-// )
+    const mappedPrices = Object.keys(data).map((address) => ({
+      address,
+      price: data[address],
+    }))
 
-// interface FarmUserDataResponse {
-//   pid: number
-//   allowance: string
-//   tokenBalance: string
-//   stakedBalance: string
-//   earnings: string
-// }
-
-// export const fetchFarmUserDataAsync = createAsyncThunk<
-//   FarmUserDataResponse[],
-//   { account: string; pids: number[] },
-//   {
-//     state: AppState
-//   }
-// >(
-//   'farms/fetchFarmUserDataAsync',
-//   async ({ account, pids }) => {
-//     const farmsToFetch = gamesConfig.filter((farmConfig) => pids.includes(farmConfig.pid))
-//     const userFarmAllowances = await fetchFarmUserAllowances(account, farmsToFetch)
-//     const userFarmTokenBalances = await fetchFarmUserTokenBalances(account, farmsToFetch)
-//     const userStakedBalances = await fetchFarmUserStakedBalances(account, farmsToFetch)
-//     const userFarmEarnings = await fetchFarmUserEarnings(account, farmsToFetch)
-
-//     return userFarmAllowances.map((farmAllowance, index) => {
-//       return {
-//         pid: farmsToFetch[index].pid,
-//         allowance: userFarmAllowances[index],
-//         tokenBalance: userFarmTokenBalances[index],
-//         stakedBalance: userStakedBalances[index],
-//         earnings: userFarmEarnings[index],
-//       }
-//     })
-//   },
-//   {
-//     condition: (arg, { getState }) => {
-//       const { farms } = getState()
-//       if (farms.loadingKeys[stringify({ type: fetchFarmUserDataAsync.typePrefix, arg })]) {
-//         console.debug('farms user action is fetching, skipping here')
-//         return false
-//       }
-//       return true
-//     },
-//   },
-// )
-
-// type UnknownAsyncThunkFulfilledOrPendingAction =
-//   | UnknownAsyncThunkFulfilledAction
-//   | UnknownAsyncThunkPendingAction
-//   | UnknownAsyncThunkRejectedAction
-
-// const serializeLoadingKey = (
-//   action: UnknownAsyncThunkFulfilledOrPendingAction,
-//   suffix: UnknownAsyncThunkFulfilledOrPendingAction['meta']['requestStatus'],
-// ) => {
-//   const type = action.type.split(`/${suffix}`)[0]
-//   return stringify({
-//     arg: action.meta.arg,
-//     type,
-//   })
-// }
+    return mappedPrices
+  },
+)
 
 export const gamesSlice = createSlice({
-  name: 'Farms',
+  name: 'Games',
   initialState,
   reducers: {},
-  // extraReducers: (builder) => {
-  //   // Update farms with live data
-  //   builder.addCase(fetchFarmsPublicDataAsync.fulfilled, (state, action) => {
-  //     state.data = state.data.map((farm) => {
-  //       const liveFarmData = action.payload.find((farmData) => farmData.pid === farm.pid)
-  //       return { ...farm, ...liveFarmData }
-  //     })
-  //   })
-
-  //   // Update farms with user data
-  //   builder.addCase(fetchFarmUserDataAsync.fulfilled, (state, action) => {
-  //     action.payload.forEach((userDataEl) => {
-  //       const { pid } = userDataEl
-  //       const index = state.data.findIndex((farm) => farm.pid === pid)
-  //       state.data[index] = { ...state.data[index], userData: userDataEl }
-  //     })
-  //     state.userDataLoaded = true
-  //   })
-
-  //   builder.addMatcher(isPending, (state, action) => {
-  //     state.loadingKeys[serializeLoadingKey(action, 'pending')] = true
-  //   })
-  //   builder.addMatcher(isFulfilled, (state, action) => {
-  //     state.loadingKeys[serializeLoadingKey(action, 'fulfilled')] = false
-  //   })
-  //   builder.addMatcher(isRejected, (state, action) => {
-  //     state.loadingKeys[serializeLoadingKey(action, 'rejected')] = false
-  //   })
-  // },
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchGames.pending, (state) => {
+        return {
+          ...state,
+          isLoading: true,
+        }
+      })
+      .addCase(fetchGames.fulfilled, (state, action) => {
+        return {
+          ...state,
+          isLoading: false,
+          data: action.payload,
+        }
+      })
+      .addCase(fetchGamePrices.pending, (state) => {
+        return {
+          ...state,
+        }
+      })
+      .addCase(fetchGamePrices.fulfilled, (state, action) => {
+        return {
+          ...state,
+          prices: action.payload,
+        }
+      })
+  },
 })
 
 export default gamesSlice.reducer

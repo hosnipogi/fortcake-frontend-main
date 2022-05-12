@@ -1,10 +1,8 @@
 import { MenuItemsType, FooterLinkType } from 'fortcake-uikit-v2'
 import { ContextApi } from 'contexts/Localization/types'
-import { BASE_URL, Nav, FooterLinks as footerLinks } from 'fortcake-config-files/dist'
+import { Links, Nav, FooterLinks as footerLinks } from 'fortcake-config-files/dist'
 
 export type ConfigMenuItemsType = MenuItemsType & { hideSubNav?: boolean }
-
-export const baseUrl = BASE_URL
 
 const config: (t: ContextApi['t']) => ConfigMenuItemsType[] = (t) =>
   Nav.map((menu) => ({ ...menu, href: menu.href, label: t(menu.label) }))
@@ -20,23 +18,23 @@ export const FooterLinks: (t: ContextApi['t']) => FooterLinkType[] = (t) =>
 export const Socials = [
   {
     label: 'Twitter',
-    href: 'https://twitter.com/fortcake',
+    href: Links.TWITTER,
   },
   {
     label: 'Discord',
-    href: 'https://discord.com/invite/FAqUbJXzN9',
+    href: Links.DISCORD,
   },
   {
     label: 'Instagram',
-    href: 'https://www.instagram.com/fortcake_official/',
+    href: Links.INSTAGRAM,
   },
   {
     label: 'Medium',
-    href: 'https://fortcake.medium.com/',
+    href: Links.BLOG,
   },
   {
     label: 'BscScan',
-    href: 'https://bscscan.com/token/0xe2396e7c39b1ca1990b0e3bd5d44ebc19225ad58',
+    href: Links.BSCSCAN,
   },
   {
     label: 'PancakeSwap',
@@ -48,6 +46,6 @@ export const Socials = [
   },
   {
     label: 'Telegram',
-    href: 'https://t.me/joinchat/iPHYn9_M_cxiMTMx',
+    href: Links.TELEGRAM,
   },
 ]

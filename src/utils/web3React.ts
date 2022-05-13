@@ -30,7 +30,7 @@ export const connectorsByName: { [connectorName in ConnectorNames]: any } = {
       url: rpcUrl,
       appName: 'Fortcake',
       appLogoUrl: 'https://www.fortcake.io/images/coins/FORTCAKE.png',
-      supportedChainIds: [56, 97],
+      supportedChainIds: [chainId],
     })
   },
 } as const

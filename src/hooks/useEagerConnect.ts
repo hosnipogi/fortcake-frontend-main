@@ -20,6 +20,7 @@ const useEagerConnect = () => {
   const { login } = useAuth()
 
   useEffect(() => {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
     const connectorId = window.localStorage.getItem(connectorLocalStorageKey) as ConnectorNames
 
     if (connectorId) {
@@ -33,6 +34,7 @@ const useEagerConnect = () => {
 
         return
       }
+      if (isIOS && connectorId === ConnectorNames.WalletLink) return // fixes redirect to appstore until connectorLocalStorageKey is changed
 
       login(connectorId)
     }

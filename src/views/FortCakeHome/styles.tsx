@@ -13,47 +13,61 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   padding: 20px;
-  ${({ theme }) => theme.mediaQueries.md} {
-    padding: 36px 20px;
-    margin-bottom: 40px;
-  }
-  ${({ theme }) => theme.mediaQueries.xl} {
-    padding: 36px 0;
-  }
-  &.landingSection,
+  max-width: 1200px;
+  margin-inline: auto;
+
   &.featuresSection {
-    min-height: calc(60vh);
+    min-height: 50vh;
+    justify-content: space-evenly;
+    padding: 0;
+    margin-bottom: 20px;
     h4 {
       line-height: 1.5;
     }
   }
+
   &.landingSection {
     justify-content: flex-end;
     padding: 8vh 0;
+    min-height: calc(100vh - 80px);
+    h4 {
+      line-height: 1.5;
+    }
     .socialLinks {
       width: 100%;
       margin: 6vh 0;
-      ${({ theme }) => theme.mediaQueries.md} {
-        width: 75%;
-        align-self: flex-start;
-      }
     }
     .cta {
       width: 100%;
       justify-content: space-evenly;
-      ${({ theme }) => theme.mediaQueries.md} {
-        justify-content: flex-start;
-      }
     }
   }
-  &.featuresSection {
-    justify-content: space-evenly;
-    padding: 0;
-  }
+
   &.participateSection {
     min-height: 50vh;
     padding-top: 0;
     justify-content: flex-start;
+  }
+
+  ${({ theme }) => theme.mediaQueries.md} {
+    padding: 36px 20px;
+    /* margin-bottom: 40px; */
+    &.landingSection {
+      .socialLinks {
+        width: 75%;
+        align-self: flex-start;
+      }
+      .cta {
+        justify-content: flex-start;
+      }
+    }
+    &.featuresSection {
+      margin-bottom: 0;
+    }
+  }
+
+  ${({ theme }) => theme.mediaQueries.xl} {
+    padding: 36px 0;
   }
 `
 
@@ -107,17 +121,10 @@ export const SectionFlex = styled(Flex)`
   }
   &.participate {
     flex-direction: column;
-    margin: 20px 0;
-    padding: 0 20px;
-    ${({ theme }) => theme.mediaQueries.md} {
-      margin: 0;
-    }
+    margin: 60px 0 40px;
     h2 {
       margin-bottom: 10px;
       text-align: left;
-      ${({ theme }) => theme.mediaQueries.md} {
-        text-align: center;
-      }
     }
     h2,
     h4 {
@@ -125,11 +132,16 @@ export const SectionFlex = styled(Flex)`
       line-height: 1.5;
     }
     ${({ theme }) => theme.mediaQueries.md} {
+      /* margin: 0; */
       max-width: 55%;
+      h2 {
+        text-align: center;
+      }
     }
   }
   &.tokenomics {
     flex-direction: column;
+    max-width: 100%;
     &.reversed {
       flex-direction: column-reverse;
     }
@@ -143,6 +155,7 @@ export const SectionFlex = styled(Flex)`
   &.grid {
     > div {
       margin-bottom: 20px;
+      width: 100%;
       ${({ theme }) => theme.mediaQueries.md} {
         display: flex;
         flex-direction: column;

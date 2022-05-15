@@ -47,7 +47,7 @@ export const Line1 = styled.div`
 `
 
 export const Line2 = styled.div`
-  width: 195px;
+  width: calc(50% + 45px);
   height: 50px;
   align-self: flex-start;
   border-bottom: var(--border-primary);

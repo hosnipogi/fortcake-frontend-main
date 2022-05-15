@@ -146,7 +146,7 @@ const Home: React.FC = () => {
 
       <Section>
         <Box width="100%">
-          <Heading as="h2" scale="xl" textAlign={['left', 'left', 'center']}>
+          <Heading as="h2" scale="xl" mb={[0, 0, 0, 60]} textAlign="center">
             Roadmap
           </Heading>
         </Box>

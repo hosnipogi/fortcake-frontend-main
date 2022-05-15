@@ -22,12 +22,12 @@ const RoadMap = () => {
   if (!isDesktop) {
     return (
       <Container>
-        <MainWrapper>
+        <MainWrapper justifyContent="center">
           <MainHq>
             <Hq height={280} width={280} />
           </MainHq>
         </MainWrapper>
-        <MainWrapper justifyContent="flex-start">
+        <MainWrapper>
           <Line2 />
         </MainWrapper>
         <MainWrapper className="first">

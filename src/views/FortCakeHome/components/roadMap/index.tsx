@@ -66,7 +66,7 @@ const RoadMap = () => {
           </FlexListContainer>
         </MainWrapper>
         <MainWrapper className="sixth">
-          <FlexListContainer flexDirection="row-reverse">
+          <FlexListContainer className="hideExtendedShadow" flexDirection="row-reverse">
             <RoadMapFuture title="Q1 2023" text="Major exchange listing" />
             <RoadMapFuture title="Q1 2023" text="New features release #2" />
             <RoadMapFuture title="Q1 2023" text="New features release #2" />
@@ -89,7 +89,7 @@ const RoadMap = () => {
           <RoadMapDone title="Q4 2021" text="Mobile version finished" />
           <RoadMapDone title="Q4 2021" text="Desktop version finished" />
           <RoadMapDone title="Q4 2021" text="Partnerships with blockchain games" />
-          <BorderBox1 />
+          <BorderBox1 className="q1" />
         </FlexListContainer1>
       </MainWrapper>
       {/* Q2 */}
@@ -104,7 +104,7 @@ const RoadMap = () => {
       </MainWrapper>
       {/* Q3 */}
       <MainWrapper>
-        <BorderBox style={{ left: '-75px', borderRight: 'none', borderTop: 'none' }} />
+        <BorderBox className="q3" />
         <FlexListContainer>
           <RoadMapInProgress title="Q3 2022" text="Official platform launch" />
           <RoadMapInProgress title="Q3 2022" text="Start of marketing campaigns" />
@@ -115,14 +115,14 @@ const RoadMap = () => {
       </MainWrapper>
       {/* Q4 */}
       <MainWrapper>
-        <FlexListContainer flexDirection="row-reverse">
+        <FlexListContainer className="hideExtendedShadow" flexDirection="row-reverse">
           <RoadMapFuture title="Q4 2022" text="Exchange listing" />
           <RoadMapFuture title="Q4 2022" text="New features release #1" />
           <RoadMapFuture title="Q1 2023" text="Major exchange listing" />
           <RoadMapFuture title="Q1 2023" text="New features release #2" />
           <RoadMapFuture className="last" title="Q1 2023" text="New features release #2" />
         </FlexListContainer>
-        <BorderBox style={{ borderBottom: 'none', borderLeft: 'none' }} />
+        <BorderBox className="q4" />
       </MainWrapper>
     </Container>
   )

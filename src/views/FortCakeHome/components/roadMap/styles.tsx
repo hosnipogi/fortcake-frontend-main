@@ -12,6 +12,7 @@ enum Progress {
 export const Container = styled(Flex)`
   --border-primary: 2px solid ${({ theme }) => theme.colors.secondary};
   --border-secondary: 1px solid #63b9a3;
+  --theme-primary: ${({ theme }) => theme.colors.secondary};
 
   flex-direction: column;
   position: relative;
@@ -40,6 +41,9 @@ export const Line1 = styled.div`
   bottom: 0px;
   right: -30px;
   transform: rotate(25deg);
+  ${({ theme }) => theme.mediaQueries.lg} {
+    box-shadow: 5px 0px 9px 1px var(--theme-primary);
+  }
 `
 
 export const Line2 = styled.div`
@@ -49,14 +53,6 @@ export const Line2 = styled.div`
   border-bottom: var(--border-primary);
   border-right: var(--border-primary);
 `
-// export const Line2 = styled.div`
-//   border-top: var(--border-primary);
-//   position: absolute;
-//   width: 60%;
-//   bottom: -28px;
-//   left: -9px;
-//   transform: rotate(-19deg);
-// `
 
 export const BorderBox = styled(Box)`
   border: var(--border-primary);
@@ -66,6 +62,28 @@ export const BorderBox = styled(Box)`
   position: absolute;
   top: 30px;
   right: -75px;
+  &.q1 {
+  }
+  &.q3 {
+    left: -75px;
+    border-right: none;
+    border-top: none;
+  }
+  &.q4 {
+    border-bottom: none;
+    border-left: none;
+  }
+  ${({ theme }) => theme.mediaQueries.lg} {
+    &.q1 {
+      box-shadow: inset -9px 9px 10px -10px var(--theme-primary);
+    }
+    &.q3 {
+      box-shadow: inset 9px -9px 10px -10px var(--theme-primary);
+    }
+    &.q4 {
+      box-shadow: inset -9px 9px 10px -10px var(--theme-primary);
+    }
+  }
 `
 
 export const BorderBox1 = styled(BorderBox)`
@@ -110,8 +128,22 @@ export const FlexListContainer = styled(Flex)`
   height: 210px;
   min-width: 100%;
   ${({ theme }) => theme.mediaQueries.lg} {
-    min-width: initial;
-    border: none;
+    border-bottom: none;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 2px;
+      box-shadow: 0px 1px 10px 1px var(--theme-primary);
+      min-width: initial;
+      border: none;
+      z-index: -10;
+    }
+    &.hideExtendedShadow::after {
+      right: 2px;
+      width: 90%;
+    }
   }
 `
 
@@ -159,7 +191,7 @@ export const TextContainer = styled(Flex)<{ progress?: number }>`
     progress === Progress.INPROGRESS
       ? theme.colors.primary
       : progress === Progress.FUTURE
-      ? 'transparent'
+      ? theme.colors.background
       : theme.colors.success};
   ${({ progress }) => progress === Progress.FUTURE && `border: var(--border-secondary);`}
   max-width: 80px;
@@ -174,7 +206,7 @@ export const TextContainer = styled(Flex)<{ progress?: number }>`
 
 export const Title = styled(Text)`
   /* border-top: var(--border-primary); */
-  background-color: ${({ theme }) => theme.colors.secondary}36;
+  background-color: var(--theme-primary) 36;
   border-radius: 6px 6px 0 0;
   padding: 4px 0;
   font-size: 14px;

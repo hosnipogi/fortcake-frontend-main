@@ -167,13 +167,16 @@ export const SectionFlex = styled(Flex)`
   }
   &.small {
     > div:first-child {
-      max-width: 300px;
-      max-height: 300px;
+      max-width: 360px;
+      max-height: 360px;
       margin: -40px auto 40px;
       ${({ theme }) => theme.mediaQueries.sm} {
-        max-width: 400px;
-        max-height: 400px;
+        max-width: 460px;
+        max-height: 460px;
       }
+    }
+    > div:last-child {
+      width: 100%;
     }
   }
 `

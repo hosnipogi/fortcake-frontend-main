@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMatchBreakpoints, Image } from 'fortcake-uikit-v2'
+import { useMatchBreakpoints } from 'fortcake-uikit-v2'
 import { Hq } from './svgs'
 import {
   Container,

@@ -168,7 +168,7 @@ const Home: React.FC = () => {
 
       <Section>
         <SectionFlex className="grid tokenomics small">
-          <LazyImage src={Token} width={400} height={400} />
+          <LazyImage src={Token} width={460} height={460} />
           <div>
             <Heading as="h2" scale="xl">
               Quick Start Guide
@@ -206,9 +206,9 @@ const Home: React.FC = () => {
                   4. Swap BNB for FORTCAKE
                 </Heading>
                 <Text>
-                  You can start swapping as soon as you have BNB available! Press ‘Select a token’ and enter the token
-                  address `&quot;`0x2f477a472f4657f7917126a663b5affe94d5a2b6`&quot;` and search for
-                  `&quot;`FORTCAKE`&quot;` on the tokens list.
+                  You can start swapping as soon as you have BNB available! Press &quot;Select a token&quot; and enter
+                  the token address &quot;<pre>0x2f477a472f4657f7917126a663b5affe94d5a2b6</pre>&quot; and search for
+                  &quot;FORTCAKE&quot; on the tokens list.
                 </Text>
               </ListItems>
             </ListWrapper>

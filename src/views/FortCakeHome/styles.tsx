@@ -4,7 +4,6 @@ import { Heading as PancakeHeading, Image, Flex, ImageProps, Link } from 'fortca
 
 export const Heading = styled(PancakeHeading)<{ override?: boolean }>`
   color: ${({ theme, override }) => (override ? theme.colors.text : theme.colors.secondary)};
-  /* text-shadow: 0 0 4px lightseagreen; */
 `
 
 export const Section = styled.section`
@@ -51,7 +50,6 @@ export const Section = styled.section`
 
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 36px 20px;
-    /* margin-bottom: 40px; */
     &.landingSection {
       .socialLinks {
         width: 75%;
@@ -132,7 +130,6 @@ export const SectionFlex = styled(Flex)`
       line-height: 1.5;
     }
     ${({ theme }) => theme.mediaQueries.md} {
-      /* margin: 0; */
       max-width: 55%;
       h2 {
         text-align: center;
@@ -154,8 +151,7 @@ export const SectionFlex = styled(Flex)`
   }
   &.grid {
     > div {
-      margin-bottom: 20px;
-      width: 100%;
+      margin-bottom: 40px;
       ${({ theme }) => theme.mediaQueries.md} {
         display: flex;
         flex-direction: column;
@@ -171,13 +167,12 @@ export const SectionFlex = styled(Flex)`
   }
   &.small {
     > div:first-child {
-      max-width: 250px;
-      max-height: 204px;
-    }
-    ${({ theme }) => theme.mediaQueries.sm} {
-      > div:first-child {
+      max-width: 300px;
+      max-height: 300px;
+      margin: -40px auto 40px;
+      ${({ theme }) => theme.mediaQueries.sm} {
         max-width: 400px;
-        max-height: 326px;
+        max-height: 400px;
       }
     }
   }

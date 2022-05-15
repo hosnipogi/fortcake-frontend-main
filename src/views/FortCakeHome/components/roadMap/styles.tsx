@@ -26,11 +26,11 @@ export const Container = styled(Flex)`
 
 export const MainHq = styled(Box)`
   position: relative;
-  top: 25px;
+  top: 10px;
   ${({ theme }) => theme.mediaQueries.lg} {
     position: absolute;
-    top: -23px;
-    left: -99px;
+    top: -13px;
+    left: -103px;
   }
 `
 
@@ -38,8 +38,8 @@ export const Line1 = styled.div`
   border-top: var(--border-primary);
   position: absolute;
   width: 100px;
-  bottom: 0px;
-  right: -30px;
+  bottom: -13px;
+  right: -34px;
   transform: rotate(25deg);
   ${({ theme }) => theme.mediaQueries.lg} {
     box-shadow: 5px 0px 9px 1px var(--theme-primary);
@@ -110,13 +110,17 @@ export const MainWrapper = styled(Flex)`
     position: absolute;
     bottom: -3px;
     left: -3px;
-    width: 18%;
+    width: 30%;
     height: 6px;
     z-index: 10;
     background-color: ${({ theme }) => theme.colors.background};
   }
   ${({ theme }) => theme.mediaQueries.lg} {
     width: initial;
+  }
+  &.lastWrapper {
+    top: -1px;
+    left: 68px;
   }
 `
 

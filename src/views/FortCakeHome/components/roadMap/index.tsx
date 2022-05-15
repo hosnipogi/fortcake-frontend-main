@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMatchBreakpoints } from 'fortcake-uikit-v2'
+import { useMatchBreakpoints, Image } from 'fortcake-uikit-v2'
 import { Hq } from './svgs'
 import {
   Container,
@@ -24,7 +24,7 @@ const RoadMap = () => {
       <Container>
         <MainWrapper justifyContent="center">
           <MainHq>
-            <Hq height={280} width={280} />
+            <img src={Hq} alt="asdf" width={280} height={280} />
           </MainHq>
         </MainWrapper>
         <MainWrapper>
@@ -69,7 +69,6 @@ const RoadMap = () => {
           <FlexListContainer className="hideExtendedShadow" flexDirection="row-reverse">
             <RoadMapFuture title="Q1 2023" text="Major exchange listing" />
             <RoadMapFuture title="Q1 2023" text="New features release #2" />
-            <RoadMapFuture title="Q1 2023" text="New features release #2" />
           </FlexListContainer>
         </MainWrapper>
       </Container>
@@ -79,7 +78,8 @@ const RoadMap = () => {
   return (
     <Container>
       <MainHq>
-        <Hq height={210} width={210} />
+        <img src={Hq} alt="asdf" width={210} height={210} />
+        {/* <Hq height={210} width={210} /> */}
         <Line1 />
       </MainHq>
       {/* Q1 */}
@@ -114,12 +114,11 @@ const RoadMap = () => {
         </FlexListContainer>
       </MainWrapper>
       {/* Q4 */}
-      <MainWrapper>
+      <MainWrapper className="lastWrapper">
         <FlexListContainer className="hideExtendedShadow" flexDirection="row-reverse">
           <RoadMapFuture title="Q4 2022" text="Exchange listing" />
           <RoadMapFuture title="Q4 2022" text="New features release #1" />
           <RoadMapFuture title="Q1 2023" text="Major exchange listing" />
-          <RoadMapFuture title="Q1 2023" text="New features release #2" />
           <RoadMapFuture className="last" title="Q1 2023" text="New features release #2" />
         </FlexListContainer>
         <BorderBox className="q4" />

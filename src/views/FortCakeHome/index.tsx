@@ -20,7 +20,7 @@ import {
   CoinGecko,
   PancakeSwap,
 } from '../../assets/images/home/svg'
-import Token from '../../assets/images/home/token.png'
+import Token from '../../assets/images/home/token.svg'
 import Tokenomics from '../../assets/images/home/tokenomics.png'
 import GamePreview from '../../assets/images/home/gamepreview-noshadow.png'
 import SwapPreview from '../../assets/images/home/gamepreviewhq.png'
@@ -168,7 +168,7 @@ const Home: React.FC = () => {
 
       <Section>
         <SectionFlex className="grid tokenomics small">
-          <LazyImage src={Token} width={400} height={326} />
+          <LazyImage src={Token} width={400} height={400} />
           <div>
             <Heading as="h2" scale="xl">
               Quick Start Guide

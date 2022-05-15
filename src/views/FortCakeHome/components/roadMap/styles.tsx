@@ -206,7 +206,7 @@ export const TextContainer = styled(Flex)<{ progress?: number }>`
 
 export const Title = styled(Text)`
   /* border-top: var(--border-primary); */
-  background-color: var(--theme-primary) 36;
+  background-color: ${({ theme }) => theme.colors.secondary}36;
   border-radius: 6px 6px 0 0;
   padding: 4px 0;
   font-size: 14px;

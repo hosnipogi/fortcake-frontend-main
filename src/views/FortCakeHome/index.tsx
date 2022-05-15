@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
+import { Box, Text, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
 import { Socials } from '../../components/Menu/config/config'
 import useTheme from '../../hooks/useTheme'
 import { PageMeta } from '../../components/Layout/Page'
@@ -35,6 +35,7 @@ import {
   ListWrapper,
   PageHeader,
 } from './styles'
+import RoadMap from './components/roadMap'
 
 const [Twitter, Discord, Instagram, Medium, BscScanHref, PancakeSwapHref, CoinGeckoHref] = Socials
 
@@ -141,6 +142,18 @@ const Home: React.FC = () => {
             <Text>More than a platform, FORTCAKE is a community DAO. (Decentralized autonomous organization)</Text>
           </Features>
         </SectionFlex>
+      </Section>
+
+      <Section>
+        <Box width="100%">
+          <Heading as="h2" scale="xl" textAlign={['left', 'left', 'center']}>
+            Roadmap
+          </Heading>
+        </Box>
+        <RoadMap />
+      </Section>
+
+      <Section>
         <SectionFlex className="participate" ref={ParticipateSection}>
           <Heading as="h2" scale="xl">
             How to Participate

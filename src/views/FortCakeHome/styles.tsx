@@ -20,13 +20,9 @@ export const Section = styled.section`
   ${({ theme }) => theme.mediaQueries.xl} {
     padding: 36px 0;
   }
-  h2,
-  h3 {
-    text-align: center;
-  }
   &.landingSection,
   &.featuresSection {
-    min-height: calc(100vh - 80px);
+    min-height: calc(60vh);
     h4 {
       line-height: 1.5;
     }

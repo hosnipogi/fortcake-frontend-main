@@ -210,7 +210,7 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
           <Flex justifyContent="flex-end" mt="20px" style={{ width: '100%' }}>
             <ChainAddress chain={chain} />
             <Button className="externalLinks" as="a" variant="secondary" href={cta} scale="sm">
-              Find out more
+              Play
             </Button>
           </Flex>
           <Flex justifyContent="center" mt="18px" mb="10px" style={{ width: '100%' }}>
@@ -250,7 +250,7 @@ const Game: React.FunctionComponent<GameProps & { actionPanelOpen: boolean }> = 
               <Flex>
                 <ChainAddress chain={chain} />
                 <Button className="externalLinks" as="a" variant="secondary" href={cta} scale="sm">
-                  Find out more
+                  Play
                 </Button>
               </Flex>
             </Flex>

@@ -124,6 +124,9 @@ export const SectionFlex = styled(Flex)`
       margin-bottom: 10px;
       text-align: left;
     }
+    h4 {
+      font-weight: 400;
+    }
     h2,
     h4 {
       width: 100%;
@@ -131,7 +134,8 @@ export const SectionFlex = styled(Flex)`
     }
     ${({ theme }) => theme.mediaQueries.md} {
       max-width: 55%;
-      h2 {
+      h2,
+      h4 {
         text-align: center;
       }
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Text, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
+import AddressComponent from './components/CopyAddress'
 import { Socials } from '../../components/Menu/config/config'
 import useTheme from '../../hooks/useTheme'
 import { PageMeta } from '../../components/Layout/Page'
@@ -39,6 +40,7 @@ import {
 import RoadMap from './components/roadMap'
 
 const [Twitter, Discord, Instagram, Medium, BscScanHref, PancakeSwapHref, CoinGeckoHref] = Socials
+const FORTCAKE_ADDRESS = '0x2f477a472f4657f7917126a663b5affe94d5a2b6'
 
 const Home: React.FC = () => {
   const { isDark } = useTheme()
@@ -82,6 +84,12 @@ const Home: React.FC = () => {
               FORTCAKE is a community driven crypto gaming platform built on the Binance Smart Chain. The goal is
               simple; introduce the world to PLAY-TO-EARN.
             </Heading>
+            <Box width="100%" mt={20}>
+              <Text mb={2} fontSize="14px" ml="4px">
+                Fortcake Contract Address:
+              </Text>
+              <AddressComponent address={FORTCAKE_ADDRESS} />
+            </Box>
             <Flex className="socialLinks">
               <SocialLink href={Discord.href}>
                 <SocialDiscord width={56} height={56} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
@@ -105,7 +113,7 @@ const Home: React.FC = () => {
               </Button>
             </Flex>
           </PageHeader>
-          <LazyImage src={CakeImage} width={430} height={336} className="imgHideOnMobile" />
+          <LazyImage src={CakeImage} width={460} height={360} className="imgHideOnMobile" />
         </SectionFlex>
         <SectionFlex className="address">
           <SocialLink href={BscScanHref.href}>

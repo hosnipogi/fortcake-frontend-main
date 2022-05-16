@@ -26,8 +26,8 @@ export const Section = styled.section`
   }
 
   &.landingSection {
-    justify-content: flex-end;
-    padding: 8vh 0;
+    justify-content: center;
+    padding: 5vh 0;
     min-height: calc(100vh - 80px);
     h4 {
       line-height: 1.5;
@@ -82,7 +82,7 @@ export const SectionFlex = styled(Flex)`
     }
   }
   &.address {
-    min-height: 21vh;
+    min-height: 12vh;
     align-items: flex-end;
     flex-direction: column;
     width: 100%;

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Text, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
+import { Link as RouterLink } from 'react-router-dom'
 import AddressComponent from './components/CopyAddress'
 import { Socials } from '../../components/Menu/config/config'
 import useTheme from '../../hooks/useTheme'
@@ -131,23 +132,31 @@ const Home: React.FC = () => {
       <Section className="featuresSection">
         <SectionFlex justifyContent="space-between" alignItems="top" className="features">
           <Features>
-            <Play width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
-            <Heading as="h4">Play</Heading>
+            <RouterLink to="/play">
+              <Play width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
+              <Heading as="h4">Play</Heading>
+            </RouterLink>
             <Text>Find PLAY-TO-EARN games, Featuring top crypto games all in one place...</Text>
           </Features>
           <Features>
-            <Swap width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
-            <Heading as="h4">Swap</Heading>
+            <RouterLink to="/swap">
+              <Swap width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
+              <Heading as="h4">Swap</Heading>
+            </RouterLink>
             <Text>FORTCAKE allows users to trade tokens without the need for centralized exchanges.</Text>
           </Features>
           <Features>
-            <Earn width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
-            <Heading as="h4">Earn</Heading>
+            <a href="https://fortcake.gitbook.io/fortcake/3.-core-features" target="_blank" rel="noreferrer">
+              <Earn width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
+              <Heading as="h4">Earn</Heading>
+            </a>
             <Text>Earn tokens and rewards on FORTCAKE by joining & more.</Text>
           </Features>
           <Features>
-            <Dao width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
-            <Heading as="h4">DAO</Heading>
+            <a href="https://fortcake.gitbook.io/fortcake/3.-core-features" target="_blank" rel="noreferrer">
+              <Dao width={90} height={90} fill={isDark ? dark.colors.secondary : dark.colors.primary} />
+              <Heading as="h4">DAO</Heading>
+            </a>
             <Text>More than a platform, FORTCAKE is a community DAO. (Decentralized autonomous organization)</Text>
           </Features>
         </SectionFlex>

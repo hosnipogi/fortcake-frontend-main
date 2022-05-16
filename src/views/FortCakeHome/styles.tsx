@@ -15,6 +15,12 @@ export const Section = styled.section`
   max-width: 1200px;
   margin-inline: auto;
   min-height: 60vh;
+  a {
+    transition: opacity 0.2s ease;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
 
   &.featuresSection {
     justify-content: space-evenly;

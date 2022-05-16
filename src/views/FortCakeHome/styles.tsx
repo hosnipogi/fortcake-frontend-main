@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading as PancakeHeading, Image, Flex, ImageProps, Link } from 'fortcake-uikit-v2'
+import { Heading as PancakeHeading, Image, Flex, ImageProps, Link, LinkExternal } from 'fortcake-uikit-v2'
 
 export const Heading = styled(PancakeHeading)<{ override?: boolean }>`
   color: ${({ theme, override }) => (override ? theme.colors.text : theme.colors.secondary)};
@@ -14,9 +14,9 @@ export const Section = styled.section`
   padding: 20px;
   max-width: 1200px;
   margin-inline: auto;
+  min-height: 60vh;
 
   &.featuresSection {
-    min-height: 50vh;
     justify-content: space-evenly;
     padding: 0;
     margin-bottom: 20px;
@@ -219,6 +219,10 @@ export const SocialLink = styled(Link)`
   ${({ theme }) => theme.mediaQueries.md} {
     justify-content: flex-start;
   }
+`
+
+export const ExternalLink = styled(LinkExternal)`
+  display: inline-flex;
 `
 
 export const LazyImage: React.FC<ImageProps> = ({ height, width, src, className, ...props }) => (

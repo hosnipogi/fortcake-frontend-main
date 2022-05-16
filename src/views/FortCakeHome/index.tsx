@@ -34,6 +34,7 @@ import {
   ListItems,
   ListWrapper,
   PageHeader,
+  ExternalLink,
 } from './styles'
 import RoadMap from './components/roadMap'
 
@@ -169,76 +170,81 @@ const Home: React.FC = () => {
       <Section>
         <SectionFlex className="grid tokenomics small">
           <LazyImage src={Token} width={460} height={460} />
-          <div>
+          <Box>
             <Heading as="h2" scale="xl">
               Quick Start Guide
+            </Heading>
+            <Heading as="h4" scale="lg" override style={{ fontWeight: 'normal' }} mb={30} width="100%">
+              Follow these guides to get started using Fortcake
             </Heading>
             <ListWrapper>
               <ListItems>
                 <Heading as="h4" scale="lg">
-                  1. Create Trust wallet
+                  1. Create your wallet
                 </Heading>
                 <Text>
-                  Create a Trust Wallet using an iOS/Android mobile device. This will allow you to buy, sell, send, and
-                  receive cryptocurrency tokens.
+                  To get started on Fortcake, the first thing you&#39;ll need is to set up a wallet that supports BNB
+                  Smart Chain (BSC). Wallets are available both on desktop computers and on smartphone devices.
+                  You&#39;ll need to choose the wallet that fits your needs best. Follow &nbsp;
+                  <ExternalLink href="https://fortcake.gitbook.io/fortcake/get-started/create-a-wallet">
+                    this guide
+                  </ExternalLink>
+                  &nbsp; to create a new wallet.
                 </Text>
               </ListItems>
               <ListItems>
                 <Heading as="h4" scale="lg">
-                  2. Send BNB to your wallet
+                  2. Get BEP-20 tokens
                 </Heading>
                 <Text>
-                  Create a Trust Wallet using an iOS/Android mobile device. This will allow you to buy, sell, send, and
-                  receive cryptocurrency tokens.
+                  The native tokens of BNB Smart Chain (BSC) are BEP-20 tokens. Follow&nbsp;
+                  <ExternalLink href="https://fortcake.gitbook.io/fortcake/get-started/get-bep20-tokens">
+                    this guide
+                  </ExternalLink>
+                  &nbsp;to get BEP-20 Tokens or to convert to them.
                 </Text>
               </ListItems>
               <ListItems>
                 <Heading as="h4" scale="lg">
-                  3. Connect wallet to PancakeSwap
+                  3. Connect your wallet to Fortcake
                 </Heading>
                 <Text>
-                  Create a Trust Wallet using an iOS/Android mobile device. This will allow you to buy, sell, send, and
-                  receive cryptocurrency tokens.
-                </Text>
-              </ListItems>
-              <ListItems>
-                <Heading as="h4" scale="lg">
-                  4. Swap BNB for FORTCAKE
-                </Heading>
-                <Text>
-                  You can start swapping as soon as you have BNB available! Press &quot;Select a token&quot; and enter
-                  the token address &quot;<pre>0x2f477a472f4657f7917126a663b5affe94d5a2b6</pre>&quot; and search for
-                  &quot;FORTCAKE&quot; on the tokens list.
+                  You&#39;ve made a wallet and gotten your BEP-20 tokens, now you just need to connect your wallet with
+                  Fortcake and you&#39;re good to go! Follow&nbsp;
+                  <ExternalLink href="https://fortcake.gitbook.io/fortcake/get-started/connect-your-wallet-to-fortcake">
+                    this guide
+                  </ExternalLink>
+                  &nbsp;to connect your wallet.
                 </Text>
               </ListItems>
             </ListWrapper>
-          </div>
+          </Box>
         </SectionFlex>
       </Section>
       <Section>
         <SectionFlex className="grid tokenomics">
-          <div>
+          <Box>
             <Heading as="h2" scale="xl">
               Tokenomics
             </Heading>
             <Text>
-              <div>
-                <p>
+              <Box>
+                <Text>
                   FORTCAKE is a BEP-20 cryptocurrency governance token that can be traded on the Binance Smart Chain
                   (BSC). FORTCAKE is both a platform and currency used as an independent store of value for gamers and
-                  enthusiasts alike.{' '}
-                </p>
-              </div>
-              <div style={{ marginTop: '40px' }}>
-                <p>Total Supply: 203,009,146 FORTCAKE</p>
-              </div>
+                  enthusiasts alike.
+                </Text>
+              </Box>
+              <Box style={{ marginTop: '40px' }}>
+                <Text>Total Supply: 203,009,146 FORTCAKE</Text>
+              </Box>
             </Text>
-          </div>
+          </Box>
           <LazyImage src={Tokenomics} width={500} height={374} />
         </SectionFlex>
         <SectionFlex className="grid tokenomics reversed">
           <LazyImage src={GamePreview} width={480} height={359} />
-          <div>
+          <Box>
             <Heading as="h2" scale="xl">
               PLAY-TO-EARN
             </Heading>
@@ -247,22 +253,22 @@ const Home: React.FC = () => {
               than a community, FORTCAKE is a movement, ten years from now, we will have just begun, blockchain games
               are here to stay.
             </Text>
-          </div>
+          </Box>
         </SectionFlex>
         <SectionFlex className="grid tokenomics">
-          <div>
+          <Box>
             <Heading as="h2" scale="xl">
               Swap
             </Heading>
             <Text>
-              <div>
+              <Box>
                 <p>
                   FORTCAKE&apos;s built in Swap feature, Trade your favorite game tokens, No registration, no problem.
                   Connect your wallet, and exchange any token on the Binance blockchain in seconds.
                 </p>
-              </div>
+              </Box>
             </Text>
-          </div>
+          </Box>
           <LazyImage src={SwapPreview} width={500} height={374} />
         </SectionFlex>
       </Section>

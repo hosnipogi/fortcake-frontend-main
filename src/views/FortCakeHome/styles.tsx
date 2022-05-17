@@ -27,7 +27,6 @@ export const Section = styled.section`
     padding: 0;
     margin-bottom: 20px;
     h4 {
-      line-height: 1.5;
     }
   }
 
@@ -36,7 +35,6 @@ export const Section = styled.section`
     padding: 5vh 0;
     min-height: calc(100vh - 80px);
     h4 {
-      line-height: 1.5;
     }
     .socialLinks {
       width: 100%;
@@ -136,7 +134,6 @@ export const SectionFlex = styled(Flex)`
     h2,
     h4 {
       width: 100%;
-      line-height: 1.5;
     }
     ${({ theme }) => theme.mediaQueries.md} {
       max-width: 55%;

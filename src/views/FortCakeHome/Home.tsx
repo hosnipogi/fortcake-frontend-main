@@ -263,7 +263,7 @@ const Home: React.FC = () => {
           <LazyImage src={GamePreview} width={410} height={310} />
           <Box>
             <Heading as="h2" scale="xl">
-              PLAY-TO-EARN
+              Play
             </Heading>
             <Text>
               Featuring the top Binance Smartchain (BNB) play to earn games. Each game is connected to our built in swap
@@ -288,7 +288,7 @@ const Home: React.FC = () => {
               </Box>
             </Text>
           </Box>
-          <LazyImage src={SwapPreview} width={450} height={304} />
+          <LazyImage src={SwapPreview} width={450} height={316} />
         </SectionFlex>
       </Section>
     </>

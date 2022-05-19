@@ -13,6 +13,8 @@ export const Container = styled(Flex)`
   --border-primary: 2px solid ${({ theme }) => theme.colors.secondary};
   --border-secondary: 1px solid #63b9a3;
   --theme-primary: ${({ theme }) => theme.colors.secondary};
+  --text-title-future: #1c3e36;
+  --text-title-inprogress: #91344e;
 
   flex-direction: column;
   position: relative;
@@ -191,30 +193,52 @@ export const FlexPon = styled(Flex)`
 // Text components
 
 export const TextContainer = styled(Flex)<{ progress?: number }>`
-  background-color: ${({ theme, progress }) =>
-    progress === Progress.INPROGRESS
-      ? theme.colors.primary
-      : progress === Progress.FUTURE
-      ? theme.colors.background
-      : theme.colors.success};
   ${({ progress }) => progress === Progress.FUTURE && `border: var(--border-secondary);`}
-  max-width: 80px;
+  max-width: 96px;
   text-align: center;
   border-radius: 6px;
   align-items: center;
   ${({ theme }) => theme.mediaQueries.sm} {
     max-width: 115px;
-    /* width: initial; */
+  }
+
+  > div {
+    &:first-child {
+      // Title
+      color: ${({ theme }) => !theme.isDark && 'white'};
+      background-color: ${({ progress, theme }) =>
+        progress === Progress.DONE ? `${theme.colors.primary}EE` : 'var(--text-title-future)'};
+    }
+    &:last-child {
+      // TextContent
+      color: ${({ theme, progress }) => {
+        if (theme.isDark) {
+          if (progress === Progress.INPROGRESS) return 'white'
+          if (progress === Progress.DONE) return `${theme.colors.background}`
+        } else {
+          return progress !== Progress.FUTURE && 'white'
+        }
+        return theme.colors.text
+      }};
+      background-color: ${({ theme, progress }) =>
+        progress === Progress.INPROGRESS
+          ? `${theme.colors.primary}A7`
+          : progress === Progress.FUTURE
+          ? theme.colors.background
+          : theme.colors.success};
+    }
   }
 `
 
-export const Title = styled(Text)`
-  /* border-top: var(--border-primary); */
-  background-color: ${({ theme }) => theme.colors.secondary}36;
+export const Title = styled(Text)<{ title?: string }>`
+  ${({ title }) =>
+    title === 'In Progress' &&
+    `
+    background-color: var(--text-title-inprogress) !important;`}
+
   border-radius: 6px 6px 0 0;
   padding: 4px 0;
   font-size: 14px;
-  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
   width: 100%;
   font-weight: 600;
 `
@@ -222,13 +246,15 @@ export const Title = styled(Text)`
 export const TextContent = styled(Text)`
   padding: 8px;
   font-size: 13px;
+  border-radius: 0 0 6px 6px;
+  max-width: 100%;
 `
 
 export const RoadMapInProgress = ({ title, text }: { title: string; text: string }) => (
   <FlexPonWrapper>
     <FlexPon>
       <TextContainer flexDirection="column" alignItems="center" progress={Progress.INPROGRESS}>
-        <Title>{title}</Title>
+        <Title title={title}>{title}</Title>
         <TextContent>{text}</TextContent>
       </TextContainer>
       <PonPink height={80} width={100} />
@@ -238,7 +264,7 @@ export const RoadMapInProgress = ({ title, text }: { title: string; text: string
 export const RoadMapDone = ({ title, text }: { title: string; text: string }) => (
   <FlexPonWrapper>
     <FlexPon>
-      <TextContainer flexDirection="column" alignItems="center">
+      <TextContainer flexDirection="column" alignItems="center" progress={Progress.DONE}>
         <Title>{title}</Title>
         <TextContent>{text}</TextContent>
       </TextContainer>

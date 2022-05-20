@@ -63,7 +63,7 @@ const Home: React.FC = () => {
     : {}
 
   return (
-    <>
+    <Box overflowX="hidden" position="relative">
       <PageMeta />
       <Section className="landingSection">
         <SectionFlex className="grid">
@@ -317,7 +317,7 @@ const Home: React.FC = () => {
           </Box>
         </SectionFlex>
       </Section>
-    </>
+    </Box>
   )
 }
 

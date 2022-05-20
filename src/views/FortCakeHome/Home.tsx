@@ -1,8 +1,8 @@
 import React from 'react'
-import { Box, Text, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
+import { Box, Button, Flex, dark, useMatchBreakpoints } from 'fortcake-uikit-v2'
 import { Link as RouterLink } from 'react-router-dom'
 import AddressComponent from './components/CopyAddress'
-import { Socials } from '../../components/Menu/config/config'
+import { Socials } from '../../components/Menu/config'
 import useTheme from '../../hooks/useTheme'
 import { PageMeta } from '../../components/Layout/Page'
 
@@ -38,6 +38,7 @@ import {
   ListWrapper,
   PageHeader,
   ExternalLink,
+  StyledText as Text,
 } from './styles'
 import RoadMap from './components/roadMap'
 
@@ -115,7 +116,13 @@ const Home: React.FC = () => {
               </Button>
             </Flex>
           </PageHeader>
-          <LazyImage src={CakeImage} width={460} height={360} className="imgHideOnMobile" />
+          <LazyImage
+            src={CakeImage}
+            width={460}
+            height={360}
+            style={{ alignSelf: 'flex-start' }}
+            className="imgHideOnMobile"
+          />
         </SectionFlex>
         <SectionFlex className="address">
           <SocialLink href={BscScanHref.href}>

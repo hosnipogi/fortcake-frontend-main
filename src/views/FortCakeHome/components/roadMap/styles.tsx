@@ -230,12 +230,7 @@ export const TextContainer = styled(Flex)<{ progress?: number }>`
   }
 `
 
-export const Title = styled(Text)<{ title?: string }>`
-  ${({ title }) =>
-    title === 'In Progress' &&
-    `
-    background-color: var(--text-title-inprogress) !important;`}
-
+export const Title = styled(Text)`
   border-radius: 6px 6px 0 0;
   padding: 4px 0;
   font-size: 14px;
@@ -253,8 +248,8 @@ export const TextContent = styled(Text)`
 export const RoadMapInProgress = ({ title, text }: { title: string; text: string }) => (
   <FlexPonWrapper>
     <FlexPon>
-      <TextContainer flexDirection="column" alignItems="center" progress={Progress.INPROGRESS}>
-        <Title title={title}>{title}</Title>
+      <TextContainer flexDirection="column" alignItems="center" progress={Progress.FUTURE}>
+        <Title>{title}</Title>
         <TextContent>{text}</TextContent>
       </TextContainer>
       <PonPink height={80} width={100} />

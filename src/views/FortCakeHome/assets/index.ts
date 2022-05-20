@@ -11,6 +11,7 @@ export { default as SocialTwitter } from './svg/SocialTwitter'
 export { default as BscScan } from './svg/AddressBscScan'
 export { default as CoinGecko } from './svg/AddressCoinGecko'
 export { default as PancakeSwap } from './svg/AddressPancakeSwap'
+export { default as EarnRewards } from './svg/EarnRewards.svg'
 export { default as Token } from './svg/token.svg'
 
 // Images

@@ -12,6 +12,7 @@ import {
   Swap,
   Dao,
   Earn,
+  EarnRewards,
   Play,
   SocialIg,
   SocialMedium,
@@ -281,14 +282,32 @@ const Home: React.FC = () => {
             </Heading>
             <Text>
               <Box>
-                <p>
+                <Text>
                   FORTCAKE&apos;s built in Swap feature, Trade your favorite game tokens, No registration, no problem.
                   Connect your wallet, and exchange any token on the Binance blockchain in seconds.
-                </p>
+                </Text>
               </Box>
             </Text>
           </Box>
           <LazyImage src={SwapPreview} width={450} height={316} />
+        </SectionFlex>
+        <SectionFlex className="grid tokenomics reversed">
+          <LazyImage src={EarnRewards} width={400} height={320} />
+          <Box>
+            <Heading as="h2" scale="xl">
+              Earn Rewards
+            </Heading>
+            <Text>
+              <Box>
+                <Text>
+                  Gamers will be able to earn $Fortcake as a reward while they play and use the platform, unlocking
+                  access to games, exclusive drops, and community involvement with Fortcake. Fortcake will be able to
+                  directly transfer earnings between games, replacing manual transfer using our swap feature. More will
+                  be announced in the near future.
+                </Text>
+              </Box>
+            </Text>
+          </Box>
         </SectionFlex>
       </Section>
     </>

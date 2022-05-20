@@ -146,6 +146,7 @@ export const SectionFlex = styled(Flex)`
   &.tokenomics {
     flex-direction: column;
     max-width: 100%;
+    margin-bottom: 40px;
     &.reversed {
       flex-direction: column-reverse;
     }

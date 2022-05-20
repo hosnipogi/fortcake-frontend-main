@@ -222,7 +222,7 @@ export const TextContainer = styled(Flex)<{ progress?: number }>`
       }};
       background-color: ${({ theme, progress }) =>
         progress === Progress.INPROGRESS
-          ? `${theme.colors.primary}A7`
+          ? `${theme.colors.primary}DD`
           : progress === Progress.FUTURE
           ? theme.colors.background
           : theme.colors.success};

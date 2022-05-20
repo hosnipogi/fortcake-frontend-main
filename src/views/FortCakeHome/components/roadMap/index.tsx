@@ -48,19 +48,19 @@ const RoadMap = () => {
           <FlexListContainer>
             <RoadMapDone title="Q2 2022" text="Live feature launch" />
             <RoadMapInProgress title="In Progress" text="Community outreach program" />
-            <RoadMapInProgress title="Q3 2022" text="Official platform launch" />
+            <RoadMapFuture title="Q3 2022" text="Official platform launch" />
           </FlexListContainer>
         </MainWrapper>
         <MainWrapper className="fourth">
           <FlexListContainer flexDirection="row-reverse">
-            <RoadMapInProgress title="Q3 2022" text="Start of marketing campaigns" />
-            <RoadMapInProgress title="Q3 2022" text="Influencer program launch" />
-            <RoadMapInProgress title="Q3 2022" text="Community/ Application adjustments" />
+            <RoadMapFuture title="Q3 2022" text="Start of marketing campaigns" />
+            <RoadMapFuture title="Q3 2022" text="Influencer program launch" />
+            <RoadMapFuture title="Q3 2022" text="Community/ Application adjustments" />
           </FlexListContainer>
         </MainWrapper>
         <MainWrapper className="fifth">
           <FlexListContainer>
-            <RoadMapInProgress title="Q3 2022" text="Growth team phase 2" />
+            <RoadMapFuture title="Q3 2022" text="Growth team phase 2" />
             <RoadMapFuture title="Q4 2022" text="Exchange listing" />
             <RoadMapFuture title="Q4 2022" text="New features release #1" />
           </FlexListContainer>
@@ -106,11 +106,11 @@ const RoadMap = () => {
       <MainWrapper>
         <BorderBox className="q3" />
         <FlexListContainer>
-          <RoadMapInProgress title="Q3 2022" text="Official platform launch" />
-          <RoadMapInProgress title="Q3 2022" text="Start of marketing campaigns" />
-          <RoadMapInProgress title="Q3 2022" text="Influencer program launch" />
-          <RoadMapInProgress title="Q3 2022" text="Community/ Application adjustments" />
-          <RoadMapInProgress title="Q3 2022" text="Growth team phase 2" />
+          <RoadMapFuture title="Q3 2022" text="Official platform launch" />
+          <RoadMapFuture title="Q3 2022" text="Start of marketing campaigns" />
+          <RoadMapFuture title="Q3 2022" text="Influencer program launch" />
+          <RoadMapFuture title="Q3 2022" text="Community/ Application adjustments" />
+          <RoadMapFuture title="Q3 2022" text="Growth team phase 2" />
         </FlexListContainer>
       </MainWrapper>
       {/* Q4 */}

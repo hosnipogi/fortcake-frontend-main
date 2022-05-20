@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Heading as PancakeHeading, Image, Flex, ImageProps, Link, LinkExternal, Text } from 'fortcake-uikit-v2'
+import abstractBg from 'assets/images/abstract.svg'
 
 export const Heading = styled(PancakeHeading)<{ override?: boolean }>`
   color: ${({ theme, override }) => (override ? theme.colors.text : theme.colors.secondary)};
@@ -36,6 +37,23 @@ export const Section = styled.section`
     justify-content: center;
     padding: 5vh 0;
     min-height: calc(100vh - 80px);
+    /* position: relative; */
+    &::after {
+      content: '';
+      position: absolute;
+      margin-inline: auto;
+      width: 200%;
+      height: clamp(11%, 15%, 100vh);
+      top: 0;
+      left: 0;
+      right: 0;
+      background-image: url(${abstractBg});
+      background-size: contain;
+      background-position: center center;
+      background-repeat: no-repeat;
+      z-index: -10;
+      opacity: 0.3;
+    }
 
     .socialLinks {
       width: 100%;
@@ -56,6 +74,10 @@ export const Section = styled.section`
   ${({ theme }) => theme.mediaQueries.md} {
     padding: 36px 20px;
     &.landingSection {
+      &::after {
+        width: min(100%, 1500px);
+        height: clamp(11%, 14%, 20%);
+      }
       .socialLinks {
         width: 75%;
         align-self: flex-start;

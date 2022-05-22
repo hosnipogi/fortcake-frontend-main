@@ -21,18 +21,18 @@ import { AppDispatch } from 'state'
 import CookieIcon from './CookieIcon'
 
 const StyledModalBody = styled(ModalBody)`
-  padding: 24px;
-  overflow-y: auto;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  &::-webkit-scrollbar {
-    display: none;
+  padding: 10px 24px;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    padding: 24px;
   }
 `
 
 const StyledModalContainer = styled(ModalContainer)`
-  max-width: 420px;
+  max-width: 280px;
   width: 100%;
+  ${({ theme }) => theme.mediaQueries.sm} {
+    max-width: 420px;
+  }
 `
 
 const InlineLink = styled(Link)`
@@ -56,7 +56,7 @@ export const CookiesNoticeModal = React.memo(({ onDismiss }: InjectedModalProps)
   }
 
   return (
-    <StyledModalContainer minWidth="320px">
+    <StyledModalContainer minWidth="280px">
       <ModalHeader>
         <ModalTitle>
           <Heading>Cookies Policy</Heading>

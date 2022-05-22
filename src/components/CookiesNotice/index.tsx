@@ -1,0 +1,89 @@
+import React from 'react'
+import {
+  ModalContainer,
+  ModalHeader,
+  ModalTitle,
+  ModalCloseButton,
+  ModalBody,
+  Button,
+  useModal,
+  Text,
+  Link,
+  Flex,
+  Heading,
+  InjectedModalProps,
+} from 'fortcake-uikit-v2'
+import styled from 'styled-components'
+import { Links } from 'components/Menu/config/config'
+import { useDispatch } from 'react-redux'
+import { setAcceptedCookie } from 'state/user/actions'
+import { AppDispatch } from 'state'
+import CookieIcon from './CookieIcon'
+
+const StyledModalBody = styled(ModalBody)`
+  padding: 24px;
+  overflow-y: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+const StyledModalContainer = styled(ModalContainer)`
+  max-width: 420px;
+  width: 100%;
+`
+
+const InlineLink = styled(Link)`
+  display: inline-block;
+`
+
+const Footer = styled(Flex)`
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 64px;
+  border-top: 1px solid ${({ theme }) => theme.colors.cardBorder};
+`
+
+export const CookiesNoticeModal = React.memo(({ onDismiss }: InjectedModalProps) => {
+  const dispatch = useDispatch<AppDispatch>()
+
+  const handleDismiss = () => {
+    dispatch(setAcceptedCookie())
+    onDismiss()
+  }
+
+  return (
+    <StyledModalContainer minWidth="320px">
+      <ModalHeader>
+        <ModalTitle>
+          <Heading>Cookies Policy</Heading>
+          <CookieIcon fill="white" width={28} ml={10} />
+        </ModalTitle>
+        <ModalCloseButton onDismiss={handleDismiss} />
+      </ModalHeader>
+      <StyledModalBody>
+        <Text>
+          We use cookies to improve your experience on our site. Before you continue, let us know if you&apos;re happy
+          to accept the use of cookies, in accordance with our{' '}
+          <InlineLink href={Links.COOKIES} display="inline-block">
+            Cookie Policy
+          </InlineLink>
+        </Text>
+      </StyledModalBody>
+      <Footer>
+        <Button scale="sm" onClick={handleDismiss}>
+          Accept
+        </Button>
+      </Footer>
+    </StyledModalContainer>
+  )
+})
+
+const PresentCookiesNotice = () => {
+  return useModal(<CookiesNoticeModal onDismiss={() => null} />)
+}
+
+export default PresentCookiesNotice

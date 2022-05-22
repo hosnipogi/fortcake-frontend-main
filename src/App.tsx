@@ -10,6 +10,7 @@ import { usePollBlockNumber } from 'state/block/hooks'
 import { usePollCoreFarmData } from 'state/farms/hooks'
 import { useFetchProfile } from 'state/profile/hooks'
 import { useFetchGames } from 'state/games/hooks'
+import { useShowCookiesNotice } from 'state/user/hooks'
 import SubgraphHealthIndicator from 'components/SubgraphHealthIndicator'
 import GlobalStyle from './style/Global'
 import Menu from './components/Menu'
@@ -49,6 +50,7 @@ const App: React.FC = () => {
   useScrollOnRouteChange()
   useUserAgent()
   useFetchGames()
+  useShowCookiesNotice()
 
   return (
     <Router history={history}>

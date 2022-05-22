@@ -34,20 +34,20 @@ const RoadMap = () => {
           <FlexListContainer>
             <RoadMapDone title="Q4 2021" text="Finish platform specifications" />
             <RoadMapDone title="Q4 2021" text="Mobile and Desktop version finished" />
-            <RoadMapDone title="Q4 2021" text="Partnerships with blockchain games" />
+            <RoadMapDone title="Q1 2022" text="Launch on blockchain" />
           </FlexListContainer>
         </MainWrapper>
         <MainWrapper className="second">
           <FlexListContainer flexDirection="row-reverse">
-            <RoadMapDone title="Q1 2022" text="Launch on blockchain" />
-            <RoadMapDone title="Q1 2022" text="Begin user acquisition campaigns" />
             <RoadMapDone title="Q1 2022" text="Launch growth team phase 1" />
+            <RoadMapDone title="Q2 2022" text="Live feature launch" />
+            <RoadMapInProgress title="In Progress" text="Community outreach program" />
           </FlexListContainer>
         </MainWrapper>
         <MainWrapper className="third">
           <FlexListContainer>
-            <RoadMapDone title="Q2 2022" text="Live feature launch" />
-            <RoadMapInProgress title="In Progress" text="Community outreach program" />
+            <RoadMapFuture title="Q1 2022" text="Begin user acquisition campaigns" />
+            <RoadMapFuture title="Q4 2021" text="Partnerships with blockchain games" />
             <RoadMapFuture title="Q3 2022" text="Official platform launch" />
           </FlexListContainer>
         </MainWrapper>
@@ -88,18 +88,18 @@ const RoadMap = () => {
           <RoadMapDone title="Q4 2021" text="Finish platform specifications" />
           <RoadMapDone title="Q4 2021" text="Mobile version finished" />
           <RoadMapDone title="Q4 2021" text="Desktop version finished" />
-          <RoadMapDone title="Q4 2021" text="Partnerships with blockchain games" />
+          <RoadMapDone title="Q1 2022" text="Launch on blockchain" />
           <BorderBox1 className="q1" />
         </FlexListContainer1>
       </MainWrapper>
       {/* Q2 */}
       <MainWrapper>
         <FlexListContainer flexDirection="row-reverse">
-          <RoadMapDone title="Q1 2022" text="Launch on blockchain" />
-          <RoadMapDone title="Q1 2022" text="Begin user acquisition campaigns" />
           <RoadMapDone title="Q1 2022" text="Launch growth team phase 1" />
           <RoadMapDone title="Q2 2022" text="Live feature launch" />
           <RoadMapInProgress title="In Progress" text="Community outreach program" />
+          <RoadMapFuture title="Q1 2022" text="Begin user acquisition campaigns" />
+          <RoadMapFuture title="Q4 2021" text="Partnerships with blockchain games" />
         </FlexListContainer>
       </MainWrapper>
       {/* Q3 */}

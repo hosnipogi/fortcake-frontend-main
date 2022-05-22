@@ -24,6 +24,7 @@ import { RedirectToSwap } from './views/Swap/redirects'
 import Games from './views/Games'
 import Swap from './views/Swap'
 import RoadMap from './views/RoadMap'
+import Legal from './views/Legal'
 // import Swap from './views/Swap'
 // Views included in the main bundle
 
@@ -67,6 +68,7 @@ const App: React.FC = () => {
             <Route path="/road">
               <RoadMap />
             </Route>
+            <Route exact strict path="/legal/:policy" component={Legal} />
             <Route exact strict path="/swap" component={Swap} />
             <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
           </Switch>

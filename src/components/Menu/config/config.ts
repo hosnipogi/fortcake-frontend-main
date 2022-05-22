@@ -11,6 +11,9 @@ export enum Links {
   BASE_URL = 'fortcake.io',
   GAMES = '/play',
   BNB = '/swap',
+  COOKIES = '/legal/cookies',
+  PRIVACY = '/legal/privacy',
+  TERMS = '/legal/terms',
   SUBMITGAME = 'https://forms.gle/dwGAFXQ9yP8e5VcR8',
   TWITTER = 'https://twitter.com/fortcake',
   TELEGRAM = 'https://t.me/joinchat/iPHYn9_M_cxiMTMx',
@@ -128,6 +131,21 @@ export const FooterLinks: Array<FooterLinkType> = [
       {
         label: 'FAQ',
         href: Links.FAQ,
+      },
+      {
+        label: 'Cookies Policy',
+        href: Links.COOKIES,
+        isExternal: false,
+      },
+      {
+        label: 'Privacy Policy',
+        href: Links.PRIVACY,
+        isExternal: false,
+      },
+      {
+        label: 'Terms of Service',
+        href: Links.TERMS,
+        isExternal: false,
       },
     ],
   },

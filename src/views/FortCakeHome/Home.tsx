@@ -302,15 +302,12 @@ const Home: React.FC = () => {
           <LazyImage src={EarnRewards} width={400} height={320} />
           <Box>
             <Heading as="h2" scale="xl">
-              Earn Rewards
+              Earn (Coming Soon)
             </Heading>
             <Text>
               <Box>
                 <Text>
-                  Gamers will be able to earn $Fortcake as a reward while they play and use the platform, unlocking
-                  access to games, exclusive drops, and community involvement with Fortcake. Fortcake will be able to
-                  directly transfer earnings between games, replacing manual transfer using our swap feature. More will
-                  be announced in the near future.
+                  Participants will soon be able to earn $Fortcake by staking, the more you stake the more you earn!
                 </Text>
               </Box>
             </Text>

@@ -98,6 +98,7 @@ export const Section = styled.section`
 
 export const SectionFlex = styled(Flex)`
   max-width: 1200px;
+  min-width: 100%;
   align-items: center;
   justify-content: space-evenly;
   .imgHideOnMobile {

@@ -46,8 +46,8 @@ const RoadMap = () => {
         </MainWrapper>
         <MainWrapper className="third">
           <FlexListContainer>
-            <RoadMapInProgress title="In Progress" text="Begin user acquisition campaigns" />
-            <RoadMapInProgress title="In Progress" text="Partnerships with blockchain games" />
+            <RoadMapFuture title="In Progress" text="Begin user acquisition campaigns" />
+            <RoadMapFuture title="In Progress" text="Partnerships with blockchain games" />
             <RoadMapFuture title="Q3 2022" text="Official platform launch" />
           </FlexListContainer>
         </MainWrapper>
@@ -97,9 +97,9 @@ const RoadMap = () => {
         <FlexListContainer flexDirection="row-reverse">
           <RoadMapDone title="Q1 2022" text="Launch growth team phase 1" />
           <RoadMapDone title="Q2 2022" text="Live feature launch" />
-          <RoadMapInProgress title="In Progress" text="Community outreach program" />
-          <RoadMapInProgress title="In Progress" text="Begin user acquisition campaigns" />
-          <RoadMapInProgress title="In Progress" text="Partnerships with blockchain games" />
+          <RoadMapFuture title="In Progress" text="Community outreach program" />
+          <RoadMapFuture title="In Progress" text="Begin user acquisition campaigns" />
+          <RoadMapFuture title="In Progress" text="Partnerships with blockchain games" />
         </FlexListContainer>
       </MainWrapper>
       {/* Q3 */}

@@ -28,11 +28,7 @@ const StyledModalBody = styled(ModalBody)`
 `
 
 const StyledModalContainer = styled(ModalContainer)`
-  max-width: 280px;
-  width: 100%;
-  ${({ theme }) => theme.mediaQueries.sm} {
-    max-width: 420px;
-  }
+  width: min(100% - 60px, 420px);
 `
 
 const InlineLink = styled(Link)`

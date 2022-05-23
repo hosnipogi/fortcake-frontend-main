@@ -3,7 +3,6 @@ import {
   ModalContainer,
   ModalHeader,
   ModalTitle,
-  ModalCloseButton,
   ModalBody,
   Button,
   useModal,
@@ -58,15 +57,13 @@ export const CookiesNoticeModal = React.memo(({ onDismiss }: InjectedModalProps)
           <Heading>Cookies Policy</Heading>
           <CookieIcon fill="white" width={28} ml={10} />
         </ModalTitle>
-        <ModalCloseButton onDismiss={handleDismiss} />
       </ModalHeader>
       <StyledModalBody>
         <Text>
-          We use cookies to improve your experience on our site. Before you continue, let us know if you&apos;re happy
-          to accept the use of cookies, in accordance with our{' '}
-          <InlineLink href={Links.COOKIES} display="inline-block">
-            Cookie Policy
-          </InlineLink>
+          We use cookies to improve your experience on our site. By continuing to view this website, you agree to our{' '}
+          <InlineLink href={Links.TERMS}>Terms of Service</InlineLink>,{' '}
+          <InlineLink href={Links.COOKIES}>Cookies Policy</InlineLink>, and{' '}
+          <InlineLink href={Links.PRIVACY}>Privacy Policy</InlineLink>.
         </Text>
       </StyledModalBody>
       <Footer>

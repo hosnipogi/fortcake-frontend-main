@@ -12,7 +12,7 @@ import {
   Swap,
   Dao,
   Earn,
-  EarnRewards,
+  Staking,
   Play,
   SocialIg,
   SocialMedium,
@@ -299,7 +299,7 @@ const Home: React.FC = () => {
           <LazyImage src={SwapPreview} width={450} height={316} />
         </SectionFlex>
         <SectionFlex className="grid tokenomics reversed">
-          <LazyImage src={EarnRewards} width={400} height={320} />
+          <LazyImage src={Staking} width={400} height={320} />
           <Box>
             <Heading as="h2" scale="xl">
               Earn (Coming Soon)
